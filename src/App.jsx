@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route} from "react-router";
 
-import Index from "./Pages";
+import Index from "./Pages/Index.jsx";
 import Index2 from "./Pages/Index2";
 import Index3 from "./Pages/Index3";
 import About from "./Pages/About";
