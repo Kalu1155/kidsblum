@@ -1,0 +1,51 @@
+{
+    "products":[
+        {
+            "id": 1,
+            "productname": "A blue shirt",
+            "currentprice": "33.40",
+            "previousprice":"40.39",
+            "images":[{},{},{}],
+            "thumbnail":"/src/assets/img/product/post-card1-3.png",
+            "description":" ipsum dolor sit amet, consectetur adipiscing elit. Donec pulvinar, tortor quis varius pretium est felis scelerisque nulla, vitae placerat justo nunc a massa. Aenean nec montes vestibulum urna vel imperdiet ipsum. Orci varius natoque penatibus  magnis dis ridicul parturient montes.",
+            "reviews":[],
+            "sku":"FTC1020B65D",
+            "yeartags":["4-5","5-7"],
+            "tags":["toys","Baby-Shirt"],
+            "category":["Kids Toy", "Kids Clothing" ],
+            "color":["blue", "black"]
+        },
+        {
+            "id": 2,
+            "productname": "A blue shirt",
+            "currentprice": "33.40",
+            "previousprice":"40.39",
+            "images":[{},{},{}],
+            "thumbnail":"/src/assets/img/product/post-card1-1.png",
+            "description":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec pulvinar, tortor quis varius pretium est felis scelerisque nulla, vitae placerat justo nunc a massa. Aenean nec montes vestibulum urna vel imperdiet ipsum. Orci varius natoque penatibus et magnis dis ridicul parturient montes.",
+            "reviews":[],
+            "sku":"FTC1020B65D",
+            "yeartags":["4-5","5-7"],
+            "tags":["toys","Baby-Shirt"],
+            "category":["Kids Toy", "Kids Clothing" ],
+            "color":["blue", "black"]
+        },
+        {
+            "id": 3,
+            "productname": "A blue shirt and may",
+            "currentprice": "33.40",
+            "previousprice":"40.39",
+            "images":[{},{},{}],
+            "thumbnail":"/src/assets/img/product/post-card1-4.png",
+            "description":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec pulvinar, tortor quis varius pretium est felis scelerisque nulla, vitae placerat justo nunc a massa. Aenean nec montes vestibulum urna vel imperdiet ipsum. Orci varius natoque penatibus et magnis dis ridicul parturient montes.",
+            "reviews":[],
+            "sku":"FTC1020B65D",
+            "yeartags":["4-5","5-7"],
+            "tags":["toys","Baby-Shirt"],
+            "category":["Kids Toy", "Kids Clothing" ],
+            "color":["blue", "black"]
+        }
+        
+
+    ]
+}

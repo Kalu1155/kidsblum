@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route} from "react-router";
 
-import Index from "./Pages/Index.jsx";
+import Index from "./Pages/Index1.jsx";
 import Index2 from "./Pages/Index2";
 import Index3 from "./Pages/Index3";
 import About from "./Pages/About";
@@ -37,7 +37,7 @@ function App() {
         <Route  path="/errorpjsno-image" element={<ErrorPjsNoImage/>}/>
         <Route  path="/faq" element={<Faq/>}/>
         <Route  path="/shop" element={<Shop/>}/>
-        <Route  path="/shopdetails" element={<ShopDetials/>}/>
+        <Route  path="/shopdetails/:id" element={<ShopDetials/>}/>
         <Route  path="/testimonail" element={<Testimonial/>}/>
         <Route  path="/wishlist" element={<WishList/>}/>
 

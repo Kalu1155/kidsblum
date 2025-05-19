@@ -1,12 +1,12 @@
 @charset "UTF-8";
 :root {
-  --theme-color: #00bbae;
+  --theme-color: #ff6d83;
   --theme-color2: #fe5a86;
-  --title-color: #103741;
+  --title-color: #3A3F50;
   --body-color: #5c707e;
   --smoke-color: #f8f8f8;
   --smoke-color2: #fff7ed;
-  --smoke-color3: #dff8f6;
+  --smoke-color3: #FFF8F0;
   --smoke-color4: #fff9ef;
   --black-color: #000000;
   --black-color2: #080e1c;
@@ -42,11 +42,14 @@ body {
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
 }
-
+.logo{
+  height: 10;
+}
 .theme-pink {
   --theme-color: #fe5a86;
   --theme-color2: #00bbae;
 }
+
 
 iframe {
   border: none;
@@ -2342,7 +2345,8 @@ textarea.is-invalid {
 
 .ot-btn.style-white:hover:before,
 .ot-btn.style-white:hover:after {
-  background-color: var(--title-color);
+  background-color:#3A3F50
+;
 }
 
 .ot-btn.style-white2 {
@@ -2690,8 +2694,11 @@ textarea.is-invalid {
 
 .sec-title {
   margin-bottom: calc(var(--section-title-space) - 8px);
-  margin-top: -0.26em;
+  /* margin-top: -0.26em; */
   text-transform: capitalize;
+  font-size:40px;
+  line-height:48.32px;
+  font-weight: 700;
 }
 
 .sub-title {
@@ -2733,7 +2740,7 @@ textarea.is-invalid {
 
 .sub-title.icon-white .text:before,
 .sub-title.icon-white .text:after {
-  background-color: var(--white-color);
+  background-color: #dc3545;
   box-shadow: none;
 }
 
@@ -2754,7 +2761,7 @@ textarea.is-invalid {
 }
 
 .box-title {
-  font-size: 24px;
+  font-size: 22px;
   line-height: 1.333;
   margin-top: -0.28em;
 }
@@ -4898,7 +4905,7 @@ a.text-theme:hover,
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  gap: 14px;
+  gap: 12px;
   -webkit-flex-wrap: wrap;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
@@ -7353,8 +7360,11 @@ a.text-theme:hover,
 
 .breadcumb-wrapper {
   background-color: #f0f0f0;
-  padding: 90px 0;
+  padding: 90px 80px  60px 0;
   overflow: hidden;
+  /* background-image: url("../img/bg/breadcrumb-bg.png"); */
+  background-size: cover;
+
 }
 
 @media (max-width: 1199px) {
@@ -8657,6 +8667,16 @@ ul.comment-list:has(> .ot-comment-item ~ .ot-comment-item):first-child > .ot-pos
   border-radius: 30px;
   position: relative;
 }
+.banner-bg{
+  /* background-image: url("../img/hero/hero-bg1-1.png"); */
+  background-size: cover;
+}
+
+.banner-bg1{
+  /* background-image: url("../img/bg/cta_bg_2_1.png"); */
+  background-size: cover;
+}
+
 
 .hero-wrap1 .hero-particle {
   position: absolute;
@@ -8705,7 +8725,7 @@ ul.comment-list:has(> .ot-comment-item ~ .ot-comment-item):first-child > .ot-pos
   font-weight: 700;
   font-family: var(--title-font);
   color: var(--title-color);
-  background-color: rgba(255, 255, 255, 0.4);
+  background-color: #dc3545;
   display: inline-block;
   padding: 1px 30px 1px 10px;
   border-radius: 4px 0 0 4px;
@@ -9847,7 +9867,7 @@ ul.comment-list:has(> .ot-comment-item ~ .ot-comment-item):first-child > .ot-pos
   position: relative;
 }
 
-.ot-team .box-img {
+ .box-img {
   position: relative;
   overflow: hidden;
   border-radius: 10px;
@@ -11966,9 +11986,9 @@ ul.comment-list:has(> .ot-comment-item ~ .ot-comment-item):first-child > .ot-pos
 }
 
 .feature-list .box-title {
-  font-size: 24px;
-  font-weight: 700;
-  margin-bottom: 5px;
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 3px;
 }
 
 .feature-list .box-icon {
@@ -12661,6 +12681,7 @@ ul.comment-list:has(> .ot-comment-item ~ .ot-comment-item):first-child > .ot-pos
 }
 .ad-card {
   border-radius: 30px;
+  margin-top: 20px;
   overflow: hidden;
   display: block;
 }
@@ -14810,6 +14831,7 @@ ul.comment-list:has(> .ot-comment-item ~ .ot-comment-item):first-child > .ot-pos
   .ot-product.product-grid {
     max-width: none;
     padding: 24px;
+    margin: 10px;
   }
   .ot-product.list-view .product-img {
     max-width: 150px;
@@ -16301,7 +16323,7 @@ span.select2-selection.select2-selection--single:focus {
 
 .category-card .box-img {
   position: relative;
-  padding: 46px 0;
+  padding: 46px 50px;
   margin-bottom: 24px;
   display: block;
 }
@@ -17759,10 +17781,8 @@ span.select2-selection.select2-selection--single:focus {
   margin-bottom: -3rem;
 }
 
-.space,
-.space-top {
-  padding-top: var(--section-space);
-}
+
+
 
 .space:has(.cloud-bg-top-shape1),
 .space-top:has(.cloud-bg-top-shape1) {
