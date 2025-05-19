@@ -1,6 +1,6 @@
 import React from 'react'
 import babyMart from "../assets/img/mainlogo.png";
-import Link from "react-router-dom";
+import {Link} from "react-router-dom";
 
 const Navbar = () => {
   return (
