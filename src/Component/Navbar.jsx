@@ -1,5 +1,6 @@
 import React from 'react'
 import babyMart from "../assets/img/mainlogo.png";
+import Link from "react-router-dom";
 
 const Navbar = () => {
   return (
@@ -79,7 +80,7 @@ const Navbar = () => {
                         <a href="#">Shop</a>
                         <ul className="sub-menu">
                           <li>
-                            <a href="/shop">Shop</a>
+                            <Link to="/shop">Shop</Link>
                           </li>
                           <li>
                             <a href="/shopdetails">Shop Details</a>
