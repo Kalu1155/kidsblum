@@ -1,15 +1,15 @@
 import React from "react";
+import { useEffect, useState } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import babyMart from "../assets/img/logo.svg";
+import babyMart from "../assets/img/mainlogo.png";
 import cartImage from "../assets/img/product/post-card1-1.png";
 import cartImage2 from "../assets/img/product/post-card1-2.png";
 import cartImage3 from "../assets/img/product/post-card1-3.png";
 import cartImage4 from "../assets/img/product/post-card1-4.png";
 import cartImage5 from "../assets/img/product/post-card1-5.png";
 import shape1 from "../assets/img/hero/hero-shape1-1.png";
-import heroBg from "../assets/img/hero/hero-bg1-1.png";
 import shape2 from "../assets/img/hero/hero-shape1-2.png";
 import thumb1 from "../assets/img/hero/hero-thumb1-1.png";
 import shape3 from "../assets/img/hero/hero-shape1-3.png";
@@ -37,9 +37,7 @@ import categoryCard5 from "../assets/img/category/category_card1_5.png";
 import categoryCard6 from "../assets/img/category/category_card1_6.png";
 import cloud from "../assets/img/shape/cloud.png";
 import ad1 from "../assets/img/normal/ad1-1.png";
-// import ad2 from "../assets/img/normal/ad1-2.png"
 import ctaBg1 from "../assets/img/bg/cta_bg_2_1.png";
-// import ctaBg2 from "../assets/img/bg/cta_bg_4_1.png";
 import ctaBg3 from "../assets/img/bg/cta_bg_5_1.png";
 import categoryCard21 from "../assets/img/category/category_card2_1.png";
 import categoryCard22 from "../assets/img/category/category_card2_2.png";
@@ -51,17 +49,13 @@ import blog1 from "../assets/img/blog/blog_1_1.png";
 import blog2 from "../assets/img/blog/blog_1_2.png";
 import blog3 from "../assets/img/blog/blog_1_3.png";
 import blog4 from "../assets/img/blog/blog_1_4.png";
-import brandLogo1 from "../assets/img/brand/brand_1_1.png";
-import brandLogo2 from "../assets/img/brand/brand_1_2.png";
-import brandLogo3 from "../assets/img/brand/brand_1_3.png";
-import brandLogo4 from "../assets/img/brand/brand_1_4.png";
-import brandLogo5 from "../assets/img/brand/brand_1_5.png";
-import brandLogo6 from "../assets/img/brand/brand_1_6.png";
-import brandLogo7 from "../assets/img/brand/brand_1_7.png";
 import Navbar from "../Component/Navbar";
 import Footer from "../Component/Footer";
 
 const Index1 = () => {
+  const url = "http://localhost:3000/products";
+  const [products, setProducts] = useState([]);
+
   const shopByAge = {
     infinite: true,
     slidesToShow: 5,
@@ -70,13 +64,13 @@ const Index1 = () => {
     autoplaySpeed: 3000,
   };
 
-  const settings = {
-    infinite: true,
-    slidesToShow: 4,
-    slidesToScroll: 4,
-    autoplay: true,
-    autoplaySpeed: 3000
-  };
+  // const settings = {
+  //   infinite: true,
+  //   slidesToShow: 4,
+  //   slidesToScroll: 4,
+  //   autoplay: true,
+  //   autoplaySpeed: 3000
+  // };
 
   const shopByCate = {
     infinite: true,
@@ -86,14 +80,33 @@ const Index1 = () => {
     autoplaySpeed: 3000
   };
 
-  const brandLogos = {
+  const brandLogo = {
     infinite: true,
-    slidesToShow: 7,
+    slidesToShow: 4,
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 3000,
   };
 
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const response = await fetch(url);
+        const data = await response.json();
+        const formattedProducts = data.map((product) => ({
+          id: product.id,
+          productname: product.productname,
+          currentprice: product.currentprice,
+          previousprice: product.previousprice,
+          thumbnail: product.thumbnail,
+        }));
+        setProducts(formattedProducts);
+      } catch (error) {
+        console.error("Error fetching products:", error);
+      }
+    };
+    fetchProducts();
+  }, []);
   return (
     <>
       <div id="QuickView" className="white-popup mfp-hide">
@@ -392,101 +405,6 @@ const Index1 = () => {
           </div>
         </div>
       </div>
-      <div className="sidemenu-wrapper sidemenu-info">
-        <div className="sidemenu-content">
-          <button className="closeButton sideMenuCls">
-            <i className="far fa-times"></i>
-          </button>
-          <div className="widget">
-            <div className="ot-widget-about">
-              <div className="about-logo">
-                <a href="/">
-                  <img src={babyMart} alt="Babymart" />
-                </a>
-              </div>
-              <p className="about-text">
-                An IT consultancy can help you assess your technology needs and
-                develop a technology strategy that aligns with your business
-              </p>
-              <div className="ot-social">
-                <a href="https://www.facebook.com/">
-                  <i className="fab fa-facebook-f"></i>
-                </a>
-                <a href="https://www.twitter.com/">
-                  <i className="fab fa-twitter"></i>
-                </a>
-                <a href="https://www.linkedin.com/">
-                  <i className="fab fa-linkedin-in"></i>
-                </a>
-                <a href="https://www.whatsapp.com/">
-                  <i className="fab fa-whatsapp"></i>
-                </a>
-              </div>
-            </div>
-          </div>
-          <div className="widget">
-            <h3 className="widget_title">Contact Us</h3>
-            <div className="ot-widget-contact">
-              <div className="info-box">
-                <div className="info-box_icon">
-                  <i className="fas fa-location-dot"></i>
-                </div>
-                <p className="info-box_text">
-                  Malian Avenue, London SZ2 52H, United Kingdom
-                </p>
-              </div>
-              <div className="info-box">
-                <div className="info-box_icon">
-                  <i className="fas fa-phone"></i>
-                </div>
-                <p className="info-box_text">
-                  <a href="tel:+2352569321586" className="info-box_link">
-                    +(235) 2569-321586
-                  </a>
-                  <a href="tel:+2352569326254" className="info-box_link">
-                    +(235) 2569-326254
-                  </a>
-                </p>
-              </div>
-              <div className="info-box">
-                <div className="info-box_icon">
-                  <i className="fas fa-envelope"></i>
-                </div>
-                <p className="info-box_text">
-                  <a
-                    href="mailto:help24/7@babymart.com"
-                    className="info-box_link"
-                  >
-                    help24/7@babymart.com
-                  </a>
-                </p>
-              </div>
-            </div>
-          </div>
-          <div className="widget">
-            <h3 className="widget_title">Newsletter</h3>
-            <div className="newsletter-widget">
-              <p className="footer-text">
-                Sign up to searing weekly newsletter to get the latest updates
-                from us.
-              </p>
-              <form action="#" className="newsletter-form">
-                <div className="form-group">
-                  <input
-                    className="form-control"
-                    type="email"
-                    placeholder="Enter Email Address"
-                    required
-                  />
-                </div>
-                <button type="submit" className="icon-btn">
-                  <i className="fal fa-paper-plane"></i>
-                </button>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
       <Navbar />
       <div className="ot-hero-wrapper hero-1" id="hero">
         <div className="hero-shape1 ripple-animation">
@@ -505,7 +423,7 @@ const Index1 = () => {
                     <img src={shape2} alt="img" data-delay="500" />
                   </div>
                   <div className="hero-style1">
-                    <span className="sub-title">
+                    <span className="sub-title text-white">
                       Up to 70% Off Our Products
                     </span>
                     <h1 className="hero-title">
@@ -710,659 +628,84 @@ const Index1 = () => {
                 <h2 className="sec-title">Flash Sale</h2>
               </div>
             </div>
+            
             <div className="col-sm-auto">
-              <div className="sec-btn">
-                <ul
-                  className="counter-list deal-counter"
-                  data-offer-date="01/01/2026"
-                >
-                  <li>
-                    <div>
-                      <div className="day count-number">00</div>
-                      <span className="count-name">Days</span>
+              <div className="sec-btn mb-30">
+                      <a href="/shop" className="ot-btn style7">
+                        View More<i className="fas fa-arrow-right ms-2"></i>
+                      </a>
                     </div>
-                  </li>
-                  <li>
-                    <div>
-                      <div className="hour count-number">00</div>
-                      <span className="count-name">Hrs</span>
-                    </div>
-                  </li>
-                  <li>
-                    <div>
-                      <div className="minute count-number">00</div>
-                      <span className="count-name">Mins</span>
-                    </div>
-                  </li>
-                  <li>
-                    <div>
-                      <div className="seconds count-number">00</div>
-                      <span className="count-name">Secs</span>
-                    </div>
-                  </li>
-                </ul>
-              </div>
             </div>
           </div>
 
-          <Slider {...settings} className="settings">
-            <div>
-              <div className="ot-product product-grid">
-                <div className="product-img">
-                  <img src={postCard1} alt="Product Image" />
-                  <span className="product-tag">
-                    <span className="tag">Hot</span>
-                    <span className="offer">-30%</span>
-                  </span>
-                  <div className="actions">
-                    <a href="/wishlist" className="icon-btn">
-                      <i className="far fa-heart"></i>
-                    </a>
-                    <button className="icon-btn">
-                      <i className="fa-light fa-arrows-cross"></i>
-                    </button>
-                    <a href="#QuickView" className="icon-btn popup-content">
-                      <i className="far fa-eye"></i>
-                    </a>
-                  </div>
-                </div>
-                <div className="product-content">
-                  <h3 className="box-title">
-                    <a href="/shop-details">White One-Piece Dress</a>
-                  </h3>
-                  <span className="price">
-                    $19.00<del>$26.99</del>
-                  </span>
-                  <div className="woocommerce-product-rating">
-                    <div
-                      className="star-rating"
-                      role="img"
-                      aria-label="Rated 5.00 out of 5"
-                    >
-                      <span>
-                        Rated <strong className="rating">5.00</strong> out of 5 based
-                        on <span className="rating">1</span> customer rating
-                      </span>
-                    </div>
-                  </div>
-                </div>
-                <div className="product-hover-content">
-                  <h3 className="box-title">
-                    <a href="shop-details.html">White One-Piece Dress</a>
-                  </h3>
-                  <span className="price">
-                    $19.00<del>$26.99</del>
-                  </span>
-                  <div className="woocommerce-product-rating">
-                    <div
-                      className="star-rating"
-                      role="img"
-                      aria-label="Rated 5.00 out of 5"
-                    >
-                      <span>
-                        Rated <strong className="rating">5.00</strong> out of 5 based
-                        on <span className="rating">1</span> customer rating
-                      </span>
-                    </div>
-                  </div>
-                  <a className="ot-btn" href="/cart">
-                    <i className="fa-light fa-basket-shopping me-1"></i> Add To Cart
-                  </a>
-                </div>
+<div className="container product-row-wrapper">
+  <div className="row">
+    {products.slice(0, 4).map((product) => (
+      <div className="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-3 mb-4" key={product.id}>
+        <div className="ot-product product-grid">
+          <div className="product-img">
+            <img src={product.thumbnail} alt="Product Image" className="img-fluid" />
+            <span className="product-tag">
+              <span className="tag">Hot</span>
+              <span className="offer">-30%</span>
+            </span>
+            <div className="actions">
+              <a href="/wishlist" className="icon-btn">
+                <i className="far fa-heart"></i>
+              </a>
+              <button className="icon-btn">
+                <i className="fa-light fa-arrows-cross"></i>
+              </button>
+              <a
+                href={`/shopdetails/${product.id}`}
+                className="icon-btn popup-content"
+              >
+                <i className="far fa-eye"></i>
+              </a>
+            </div>
+          </div>
+          <div className="product-content">
+            <h3 className="box-title">
+              <a href={`/shopdetails/${product.id}`}>{product.productname}</a>
+            </h3>
+            <span className="price">
+              ${product.currentprice}<del>${product.previousprice}</del>
+            </span>
+            <div className="woocommerce-product-rating">
+              <div className="star-rating" role="img" aria-label="Rated 5.00 out of 5">
+                <span>
+                  Rated <strong className="rating">5.00</strong> out of 5 based on{" "}
+                  <span className="rating">1</span> customer rating
+                </span>
               </div>
             </div>
-            <div>
-              <div className="ot-product product-grid">
-                <div className="product-img">
-                  <img src={postCard2} alt="Product Image" />
-                  <div className="actions">
-                    <a href="/wishlist" className="icon-btn">
-                      <i className="far fa-heart"></i>
-                    </a>
-                    <button className="icon-btn">
-                      <i className="fa-light fa-arrows-cross"></i>
-                    </button>
-                    <a href="#QuickView" className="icon-btn popup-content">
-                      <i className="far fa-eye"></i>
-                    </a>
-                  </div>
-                </div>
-                <div className="product-content">
-                  <h3 className="box-title">
-                    <a href="/shopdetails">Tinci Dunt Pharetra Soda</a>
-                  </h3>
-                  <span className="price">$30.00</span>
-                  <div className="woocommerce-product-rating">
-                    <div
-                      className="star-rating"
-                      role="img"
-                      aria-label="Rated 5.00 out of 5"
-                    >
-                      <span>
-                        Rated <strong className="rating">5.00</strong> out of 5 based
-                        on <span className="rating">1</span> customer rating
-                      </span>
-                    </div>
-                  </div>
-                </div>
-                <div className="product-hover-content">
-                  <h3 className="box-title">
-                    <a href="/shopdetails">Tinci Dunt Pharetra Soda</a>
-                  </h3>
-                  <span className="price">$30.00</span>
-                  <div className="woocommerce-product-rating">
-                    <div
-                      className="star-rating"
-                      role="img"
-                      aria-label="Rated 5.00 out of 5"
-                    >
-                      <span>
-                        Rated <strong className="rating">5.00</strong> out of 5 based
-                        on <span className="rating">1</span> customer rating
-                      </span>
-                    </div>
-                  </div>
-                  <a className="ot-btn" href="cart.html">
-                    <i className="fa-light fa-basket-shopping me-1"></i> Add To Cart
-                  </a>
-                </div>
+          </div>
+          <div className="product-hover-content">
+            <h3 className="box-title">
+              <a href={`/shopdetails/${product.id}`}>{product.productname}</a>
+            </h3>
+            <span className="price">
+              ${product.currentprice}<del>${product.previousprice}</del>
+            </span>
+            <div className="woocommerce-product-rating">
+              <div className="star-rating" role="img" aria-label="Rated 5.00 out of 5">
+                <span>
+                  Rated <strong className="rating">5.00</strong> out of 5 based on{" "}
+                  <span className="rating">1</span> customer rating
+                </span>
               </div>
             </div>
-            <div>
-              {" "}
-              <div className="ot-product product-grid">
-                <div className="product-img">
-                  <img src={postCard3} alt="Product Image" />
-                  <span className="product-tag">
-                    <span className="tag">-19%</span>
-                  </span>
-                  <div className="actions">
-                    <a href="/wishlist" className="icon-btn">
-                      <i className="far fa-heart"></i>
-                    </a>
-                    <button className="icon-btn">
-                      <i className="fa-light fa-arrows-cross"></i>
-                    </button>
-                    <a href="#QuickView" className="icon-btn popup-content">
-                      <i className="far fa-eye"></i>
-                    </a>
-                  </div>
-                </div>
-                <div className="product-content">
-                  <h3 className="box-title">
-                    <a href="/shopdetails">The Playtime Excitement!</a>
-                  </h3>
-                  <span className="price">
-                    $30.00<del>$39.99</del>
-                  </span>
-                  <div className="woocommerce-product-rating">
-                    <div
-                      className="star-rating"
-                      role="img"
-                      aria-label="Rated 5.00 out of 5"
-                    >
-                      <span>
-                        Rated <strong className="rating">5.00</strong> out of 5 based
-                        on <span className="rating">1</span> customer rating
-                      </span>
-                    </div>
-                  </div>
-                </div>
-                <div className="product-hover-content">
-                  <h3 className="box-title">
-                    <a href="/shopdetails">The Playtime Excitement!</a>
-                  </h3>
-                  <span className="price">
-                    $30.00<del>$39.99</del>
-                  </span>
-                  <div className="woocommerce-product-rating">
-                    <div
-                      className="star-rating"
-                      role="img"
-                      aria-label="Rated 5.00 out of 5"
-                    >
-                      <span>
-                        Rated <strong className="rating">5.00</strong> out of 5 based
-                        on <span className="rating">1</span> customer rating
-                      </span>
-                    </div>
-                  </div>
-                  <a className="ot-btn" href="/cart">
-                    <i className="fa-light fa-basket-shopping me-1"></i> Add To Cart
-                  </a>
-                </div>
-              </div>
-            </div>
-            <div>
-              <div className="ot-product product-grid">
-                <div className="product-img">
-                  <img src={postCard4} alt="Product Image" />
-                  <div className="actions">
-                    <a href="/wishlist" className="icon-btn">
-                      <i className="far fa-heart"></i>
-                    </a>
-                    <button className="icon-btn">
-                      <i className="fa-light fa-arrows-cross"></i>
-                    </button>
-                    <a href="#QuickView" className="icon-btn popup-content">
-                      <i className="far fa-eye"></i>
-                    </a>
-                  </div>
-                </div>
-                <div className="product-content">
-                  <h3 className="box-title">
-                    <a href="/shopdetails">Brown Lather Carriage</a>
-                  </h3>
-                  <span className="price">$19.00 - $27.00</span>
-                  <div className="woocommerce-product-rating">
-                    <div
-                      className="star-rating"
-                      role="img"
-                      aria-label="Rated 5.00 out of 5"
-                    >
-                      <span>
-                        Rated <strong className="rating">5.00</strong> out of 5 based
-                        on <span className="rating">1</span> customer rating
-                      </span>
-                    </div>
-                  </div>
-                </div>
-                <div className="product-hover-content">
-                  <h3 className="box-title">
-                    <a href="/shopdetails">Brown Lather Carriage</a>
-                  </h3>
-                  <span className="price">$19.00 - $27.00</span>
-                  <div className="woocommerce-product-rating">
-                    <div
-                      className="star-rating"
-                      role="img"
-                      aria-label="Rated 5.00 out of 5"
-                    >
-                      <span>
-                        Rated <strong className="rating">5.00</strong> out of 5 based
-                        on <span className="rating">1</span> customer rating
-                      </span>
-                    </div>
-                  </div>
-                  <a className="ot-btn" href="/cart">
-                    <i className="fa-light fa-basket-shopping me-1"></i> Add To Cart
-                  </a>
-                </div>
-              </div>
-            </div>
-            <div>
-              <div className="ot-product product-grid">
-                <div className="product-img">
-                  <img src={postCard5} alt="Product Image" />
-                  <span className="product-tag">
-                    <span className="tag">-12%</span>
-                  </span>
-                  <div className="actions">
-                    <a href="/wishlist" className="icon-btn">
-                      <i className="far fa-heart"></i>
-                    </a>
-                    <button className="icon-btn">
-                      <i className="fa-light fa-arrows-cross"></i>
-                    </button>
-                    <a href="#QuickView" className="icon-btn popup-content">
-                      <i className="far fa-eye"></i>
-                    </a>
-                  </div>
-                </div>
-                <div className="product-content">
-                  <h3 className="box-title">
-                    <a href="/shop-details">Ultricies At Torquent Dui</a>
-                  </h3>
-                  <span className="price">
-                    $12.00<del>$19.99</del>
-                  </span>
-                  <div className="woocommerce-product-rating">
-                    <div
-                      className="star-rating"
-                      role="img"
-                      aria-label="Rated 5.00 out of 5"
-                    >
-                      <span>
-                        Rated <strong className="rating">5.00</strong> out of 5 based
-                        on <span className="rating">1</span> customer rating
-                      </span>
-                    </div>
-                  </div>
-                </div>
-                <div className="product-hover-content">
-                  <h3 className="box-title">
-                    <a href="/shopdetails">Ultricies At Torquent Dui</a>
-                  </h3>
-                  <span className="price">
-                    $12.00<del>$19.99</del>
-                  </span>
-                  <div className="woocommerce-product-rating">
-                    <div
-                      className="star-rating"
-                      role="img"
-                      aria-label="Rated 5.00 out of 5"
-                    >
-                      <span>
-                        Rated <strong className="rating">5.00</strong> out of 5 based
-                        on <span className="rating">1</span> customer rating
-                      </span>
-                    </div>
-                  </div>
-                  <a className="ot-btn" href="/cart">
-                    <i className="fa-light fa-basket-shopping me-1"></i> Add To Cart
-                  </a>
-                </div>
-              </div>
-            </div>
-            <div>
-              <div className="ot-product product-grid">
-                <div className="product-img">
-                  <img src={postCard1} alt="Product Image" />
-                  <span className="product-tag">
-                    <span className="tag">Hot</span>
-                    <span className="offer">-30%</span>
-                  </span>
-                  <div className="actions">
-                    <a href="/wishlist" className="icon-btn">
-                      <i className="far fa-heart"></i>
-                    </a>
-                    <button className="icon-btn">
-                      <i className="fa-light fa-arrows-cross"></i>
-                    </button>
-                    <a href="#QuickView" className="icon-btn popup-content">
-                      <i className="far fa-eye"></i>
-                    </a>
-                  </div>
-                </div>
-                <div className="product-content">
-                  <h3 className="box-title">
-                    <a href="/shop-details">White One-Piece Dress</a>
-                  </h3>
-                  <span className="price">
-                    $19.00<del>$26.99</del>
-                  </span>
-                  <div className="woocommerce-product-rating">
-                    <div
-                      className="star-rating"
-                      role="img"
-                      aria-label="Rated 5.00 out of 5"
-                    >
-                      <span>
-                        Rated <strong className="rating">5.00</strong> out of 5 based
-                        on <span className="rating">1</span> customer rating
-                      </span>
-                    </div>
-                  </div>
-                </div>
-                <div className="product-hover-content">
-                  <h3 className="box-title">
-                    <a href="shop-details.html">White One-Piece Dress</a>
-                  </h3>
-                  <span className="price">
-                    $19.00<del>$26.99</del>
-                  </span>
-                  <div className="woocommerce-product-rating">
-                    <div
-                      className="star-rating"
-                      role="img"
-                      aria-label="Rated 5.00 out of 5"
-                    >
-                      <span>
-                        Rated <strong className="rating">5.00</strong> out of 5 based
-                        on <span className="rating">1</span> customer rating
-                      </span>
-                    </div>
-                  </div>
-                  <a className="ot-btn" href="/cart">
-                    <i className="fa-light fa-basket-shopping me-1"></i> Add To Cart
-                  </a>
-                </div>
-              </div>
-            </div>
-            <div>
-              <div className="ot-product product-grid">
-                <div className="product-img">
-                  <img src={postCard2} alt="Product Image" />
-                  <div className="actions">
-                    <a href="/wishlist" className="icon-btn">
-                      <i className="far fa-heart"></i>
-                    </a>
-                    <button className="icon-btn">
-                      <i className="fa-light fa-arrows-cross"></i>
-                    </button>
-                    <a href="#QuickView" className="icon-btn popup-content">
-                      <i className="far fa-eye"></i>
-                    </a>
-                  </div>
-                </div>
-                <div className="product-content">
-                  <h3 className="box-title">
-                    <a href="/shopdetails">Tinci Dunt Pharetra Soda</a>
-                  </h3>
-                  <span className="price">$30.00</span>
-                  <div className="woocommerce-product-rating">
-                    <div
-                      className="star-rating"
-                      role="img"
-                      aria-label="Rated 5.00 out of 5"
-                    >
-                      <span>
-                        Rated <strong className="rating">5.00</strong> out of 5 based
-                        on <span className="rating">1</span> customer rating
-                      </span>
-                    </div>
-                  </div>
-                </div>
-                <div className="product-hover-content">
-                  <h3 className="box-title">
-                    <a href="/shopdetails">Tinci Dunt Pharetra Soda</a>
-                  </h3>
-                  <span className="price">$30.00</span>
-                  <div className="woocommerce-product-rating">
-                    <div
-                      className="star-rating"
-                      role="img"
-                      aria-label="Rated 5.00 out of 5"
-                    >
-                      <span>
-                        Rated <strong className="rating">5.00</strong> out of 5 based
-                        on <span className="rating">1</span> customer rating
-                      </span>
-                    </div>
-                  </div>
-                  <a className="ot-btn" href="cart.html">
-                    <i className="fa-light fa-basket-shopping me-1"></i> Add To Cart
-                  </a>
-                </div>
-              </div>
-            </div>
-            <div>
-              {" "}
-              <div className="ot-product product-grid">
-                <div className="product-img">
-                  <img src={postCard3} alt="Product Image" />
-                  <span className="product-tag">
-                    <span className="tag">-19%</span>
-                  </span>
-                  <div className="actions">
-                    <a href="/wishlist" className="icon-btn">
-                      <i className="far fa-heart"></i>
-                    </a>
-                    <button className="icon-btn">
-                      <i className="fa-light fa-arrows-cross"></i>
-                    </button>
-                    <a href="#QuickView" className="icon-btn popup-content">
-                      <i className="far fa-eye"></i>
-                    </a>
-                  </div>
-                </div>
-                <div className="product-content">
-                  <h3 className="box-title">
-                    <a href="/shopdetails">The Playtime Excitement!</a>
-                  </h3>
-                  <span className="price">
-                    $30.00<del>$39.99</del>
-                  </span>
-                  <div className="woocommerce-product-rating">
-                    <div
-                      className="star-rating"
-                      role="img"
-                      aria-label="Rated 5.00 out of 5"
-                    >
-                      <span>
-                        Rated <strong className="rating">5.00</strong> out of 5 based
-                        on <span className="rating">1</span> customer rating
-                      </span>
-                    </div>
-                  </div>
-                </div>
-                <div className="product-hover-content">
-                  <h3 className="box-title">
-                    <a href="/shopdetails">The Playtime Excitement!</a>
-                  </h3>
-                  <span className="price">
-                    $30.00<del>$39.99</del>
-                  </span>
-                  <div className="woocommerce-product-rating">
-                    <div
-                      className="star-rating"
-                      role="img"
-                      aria-label="Rated 5.00 out of 5"
-                    >
-                      <span>
-                        Rated <strong className="rating">5.00</strong> out of 5 based
-                        on <span className="rating">1</span> customer rating
-                      </span>
-                    </div>
-                  </div>
-                  <a className="ot-btn" href="/cart">
-                    <i className="fa-light fa-basket-shopping me-1"></i> Add To Cart
-                  </a>
-                </div>
-              </div>
-            </div>
-            <div>
-              <div className="ot-product product-grid">
-                <div className="product-img">
-                  <img src={postCard4} alt="Product Image" />
-                  <div className="actions">
-                    <a href="/wishlist" className="icon-btn">
-                      <i className="far fa-heart"></i>
-                    </a>
-                    <button className="icon-btn">
-                      <i className="fa-light fa-arrows-cross"></i>
-                    </button>
-                    <a href="#QuickView" className="icon-btn popup-content">
-                      <i className="far fa-eye"></i>
-                    </a>
-                  </div>
-                </div>
-                <div className="product-content">
-                  <h3 className="box-title">
-                    <a href="/shopdetails">Brown Lather Carriage</a>
-                  </h3>
-                  <span className="price">$19.00 - $27.00</span>
-                  <div className="woocommerce-product-rating">
-                    <div
-                      className="star-rating"
-                      role="img"
-                      aria-label="Rated 5.00 out of 5"
-                    >
-                      <span>
-                        Rated <strong className="rating">5.00</strong> out of 5 based
-                        on <span className="rating">1</span> customer rating
-                      </span>
-                    </div>
-                  </div>
-                </div>
-                <div className="product-hover-content">
-                  <h3 className="box-title">
-                    <a href="/shopdetails">Brown Lather Carriage</a>
-                  </h3>
-                  <span className="price">$19.00 - $27.00</span>
-                  <div className="woocommerce-product-rating">
-                    <div
-                      className="star-rating"
-                      role="img"
-                      aria-label="Rated 5.00 out of 5"
-                    >
-                      <span>
-                        Rated <strong className="rating">5.00</strong> out of 5 based
-                        on <span className="rating">1</span> customer rating
-                      </span>
-                    </div>
-                  </div>
-                  <a className="ot-btn" href="/cart">
-                    <i className="fa-light fa-basket-shopping me-1"></i> Add To Cart
-                  </a>
-                </div>
-              </div>
-            </div>
-            <div>
-              <div className="ot-product product-grid">
-                <div className="product-img">
-                  <img src={postCard5} alt="Product Image" />
-                  <span className="product-tag">
-                    <span className="tag">-12%</span>
-                  </span>
-                  <div className="actions">
-                    <a href="/wishlist" className="icon-btn">
-                      <i className="far fa-heart"></i>
-                    </a>
-                    <button className="icon-btn">
-                      <i className="fa-light fa-arrows-cross"></i>
-                    </button>
-                    <a href="#QuickView" className="icon-btn popup-content">
-                      <i className="far fa-eye"></i>
-                    </a>
-                  </div>
-                </div>
-                <div className="product-content">
-                  <h3 className="box-title">
-                    <a href="/shop-details">Ultricies At Torquent Dui</a>
-                  </h3>
-                  <span className="price">
-                    $12.00<del>$19.99</del>
-                  </span>
-                  <div className="woocommerce-product-rating">
-                    <div
-                      className="star-rating"
-                      role="img"
-                      aria-label="Rated 5.00 out of 5"
-                    >
-                      <span>
-                        Rated <strong className="rating">5.00</strong> out of 5 based
-                        on <span className="rating">1</span> customer rating
-                      </span>
-                    </div>
-                  </div>
-                </div>
-                <div className="product-hover-content">
-                  <h3 className="box-title">
-                    <a href="/shopdetails">Ultricies At Torquent Dui</a>
-                  </h3>
-                  <span className="price">
-                    $12.00<del>$19.99</del>
-                  </span>
-                  <div className="woocommerce-product-rating">
-                    <div
-                      className="star-rating"
-                      role="img"
-                      aria-label="Rated 5.00 out of 5"
-                    >
-                      <span>
-                        Rated <strong className="rating">5.00</strong> out of 5 based
-                        on <span className="rating">1</span> customer rating
-                      </span>
-                    </div>
-                  </div>
-                  <a className="ot-btn" href="/cart">
-                    <i className="fa-light fa-basket-shopping me-1"></i> Add To Cart
-                  </a>
-                </div>
-              </div>
-            </div>
-          </Slider>
+            <a className="ot-btn" href="/cart">
+              <i className="fa-light fa-basket-shopping me-1"></i> Add To Cart
+            </a>
+          </div>
+        </div>
+      </div>
+    ))}
+  </div>
+</div>
+
+
 
         </div>
       </section>
@@ -1539,8 +882,6 @@ const Index1 = () => {
         </div>
       </section>
       <section className="position-relative space overflow-hidden bg-smoke3">
-        <div className="cloud-bg-top-shape1" data-bg-src={cloud}></div>
-        <div className="cloud-bg-bottom-shape1" data-bg-src={cloud}></div>
         <div className="container">
           <div className="row justify-content-xl-between justify-content-center align-items-center">
             <div className="col-xl-4 col-lg-6 col-md-8">
@@ -1593,10 +934,13 @@ const Index1 = () => {
           <div className="row flex-row-reverse gy-30 justify-content-center">
             <div className="col-xxl-7">
               <div className="row gy-30 filter-active">
+                {products.map((product) =>(
+
                 <div className="col-xl-4 col-lg-4 col-md-6 filter-item cat3">
-                  <div className="ot-product product-grid bg-white">
+                  <div className="ot-product product-grid bg-white"
+                  key={product.id}>
                     <div className="product-img">
-                      <img src={postCard4} alt="Product Image" />
+                      <img src={product.thumbnail} alt="Product Image" />
                       <div className="actions">
                         <a href="/wishlist" className="icon-btn">
                           <i className="far fa-heart"></i>
@@ -1604,16 +948,16 @@ const Index1 = () => {
                         <button className="icon-btn">
                           <i className="fa-light fa-arrows-cross"></i>
                         </button>
-                        <a href="#QuickView" className="icon-btn popup-content">
+                        <a href={`/shopdetails/${product.id}`}className="icon-btn popup-content">
                           <i className="far fa-eye"></i>
                         </a>
                       </div>
                     </div>
                     <div className="product-content">
                       <h3 className="box-title">
-                        <a href="/shopdetails">Brown Lather Carriage</a>
+                        <a href={`/shopdetails/${product.id}`}>{product.productname}</a>
                       </h3>
-                      <span className="price">$19.00 - $27.00</span>
+                      <span className="price">${product.currentprice}</span>
                       <div className="woocommerce-product-rating">
                         <div
                           className="star-rating"
@@ -1630,74 +974,9 @@ const Index1 = () => {
                     </div>
                     <div className="product-hover-content">
                       <h3 className="box-title">
-                        <a href="/shopdetail">Brown Lather Carriage</a>
+                        <a href={`/shopdetails/${product.id}`}>{product.productname}</a>
                       </h3>
-                      <span className="price">$19.00 - $27.00</span>
-                      <div className="woocommerce-product-rating">
-                        <div
-                          className="star-rating"
-                          role="img"
-                          aria-label="Rated 5.00 out of 5"
-                        >
-                          <span>
-                            Rated <strong className="rating">5.00</strong> out
-                            of 5 based on <span className="rating">1</span>{" "}
-                            customer rating
-                          </span>
-                        </div>
-                      </div>
-                      <a className="ot-btn" href="cart.html">
-                        <i className="fa-light fa-basket-shopping me-1"></i> Add
-                        To Cart
-                      </a>
-                    </div>
-                  </div>
-                </div>
-                <div className="col-xl-4 col-lg-4 col-md-6 filter-item cat5 cat2">
-                  <div className="ot-product product-grid bg-white">
-                    <div className="product-img">
-                      <img src={postCard3} alt="Product Image" />
-                      <span className="product-tag">-19%</span>
-                      <div className="actions">
-                        <a href="/wishlist" className="icon-btn">
-                          <i className="far fa-heart"></i>
-                        </a>
-                        <button className="icon-btn">
-                          <i className="fa-light fa-arrows-cross"></i>
-                        </button>
-                        <a href="#QuickView" className="icon-btn popup-content">
-                          <i className="far fa-eye"></i>
-                        </a>
-                      </div>
-                    </div>
-                    <div className="product-content">
-                      <h3 className="box-title">
-                        <a href="/shopdetails">The Playtime Excitement!</a>
-                      </h3>
-                      <span className="price">
-                        $30.00 <del>$39.99</del>
-                      </span>
-                      <div className="woocommerce-product-rating">
-                        <div
-                          className="star-rating"
-                          role="img"
-                          aria-label="Rated 5.00 out of 5"
-                        >
-                          <span>
-                            Rated <strong className="rating">5.00</strong> out
-                            of 5 based on <span className="rating">1</span>{" "}
-                            customer rating
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="product-hover-content">
-                      <h3 className="box-title">
-                        <a href="/shopdetails">The Playtime Excitement!</a>
-                      </h3>
-                      <span className="price">
-                        $30.00 <del>$39.99</del>
-                      </span>
+                      <span className="price">${product.currentprice}</span>
                       <div className="woocommerce-product-rating">
                         <div
                           className="star-rating"
@@ -1718,71 +997,8 @@ const Index1 = () => {
                     </div>
                   </div>
                 </div>
-                <div className="col-xl-4 col-lg-4 col-md-6 filter-item cat1 cat4">
-                  <div className="ot-product product-grid bg-white">
-                    <div className="product-img">
-                      <img src={postCard5} alt="Product Image" />
-                      <span className="product-tag">-12%</span>
-                      <div className="actions">
-                        <a href="/wishlist" className="icon-btn">
-                          <i className="far fa-heart"></i>
-                        </a>
-                        <button className="icon-btn">
-                          <i className="fa-light fa-arrows-cross"></i>
-                        </button>
-                        <a href="#QuickView" className="icon-btn popup-content">
-                          <i className="far fa-eye"></i>
-                        </a>
-                      </div>
-                    </div>
-                    <div className="product-content">
-                      <h3 className="box-title">
-                        <a href="/shopdetails">Ultricies At Torquent Dui</a>
-                      </h3>
-                      <span className="price">
-                        $12.00 <del>$19.99</del>
-                      </span>
-                      <div className="woocommerce-product-rating">
-                        <div
-                          className="star-rating"
-                          role="img"
-                          aria-label="Rated 5.00 out of 5"
-                        >
-                          <span>
-                            Rated <strong className="rating">5.00</strong> out
-                            of 5 based on <span className="rating">1</span>{" "}
-                            customer rating
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="product-hover-content">
-                      <h3 className="box-title">
-                        <a href="/shopdetails">Ultricies At Torquent Dui</a>
-                      </h3>
-                      <span className="price">
-                        $12.00 <del>$19.99</del>
-                      </span>
-                      <div className="woocommerce-product-rating">
-                        <div
-                          className="star-rating"
-                          role="img"
-                          aria-label="Rated 5.00 out of 5"
-                        >
-                          <span>
-                            Rated <strong className="rating">5.00</strong> out
-                            of 5 based on <span className="rating">1</span>{" "}
-                            customer rating
-                          </span>
-                        </div>
-                      </div>
-                      <a className="ot-btn" href="/cart">
-                        <i className="fa-light fa-basket-shopping me-1"></i> Add
-                        To Cart
-                      </a>
-                    </div>
-                  </div>
-                </div>
+                  ))}
+                
                 <div className="col-xl-4 col-lg-4 col-md-6 filter-item cat2 cat5">
                   <div className="ot-product product-grid bg-white">
                     <div className="product-img">
@@ -1916,78 +1132,12 @@ const Index1 = () => {
                     </div>
                   </div>
                 </div>
-                <div className="col-xl-4 col-lg-4 col-md-6 filter-item cat5 cat4 cat1 cat2">
-                  <div className="ot-product product-grid bg-white">
-                    <div className="product-img">
-                      <img src={postCard1} alt="Product Image" />
-                      <span className="product-tag"></span>
-                      <div className="actions">
-                        <a href="/wishlist" className="icon-btn">
-                          <i className="far fa-heart"></i>
-                        </a>
-                        <button className="icon-btn">
-                          <i className="fa-light fa-arrows-cross"></i>
-                        </button>
-                        <a href="#QuickView" className="icon-btn popup-content">
-                          <i className="far fa-eye"></i>
-                        </a>
-                      </div>
-                    </div>
-                    <div className="product-content">
-                      <h3 className="box-title">
-                        <a href="/shopdetails">Tinci Dunt Pharetra Soda</a>
-                      </h3>
-                      <span className="price">$30.00</span>
-                      <div className="woocommerce-product-rating">
-                        <div
-                          className="star-rating"
-                          role="img"
-                          aria-label="Rated 5.00 out of 5"
-                        >
-                          <span>
-                            Rated <strong className="rating">5.00</strong> out
-                            of 5 based on <span className="rating">1</span>{" "}
-                            customer rating
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="product-hover-content">
-                      <h3 className="box-title">
-                        <a href="/shopdetails">Tinci Dunt Pharetra Soda</a>
-                      </h3>
-                      <span className="price">$30.00</span>
-                      <div className="woocommerce-product-rating">
-                        <div
-                          className="star-rating"
-                          role="img"
-                          aria-label="Rated 5.00 out of 5"
-                        >
-                          <span>
-                            Rated <strong className="rating">5.00</strong> out
-                            of 5 based on <span className="rating">1</span>{" "}
-                            customer rating
-                          </span>
-                        </div>
-                      </div>
-                      <a className="ot-btn" href="/cart">
-                        <i className="fa-light fa-basket-shopping me-1"></i> Add
-                        To Cart
-                      </a>
-                    </div>
-                  </div>
-                </div>
               </div>
             </div>
-            {/* <div className="col-xxl-5 col-xl-6 col-lg-8">
-              <a href="/shopdetails" className="ad-card">
-                <img className="w-100" src={ad1} alt="img" />
-              </a>
-            </div> */}
           </div>
         </div>
       </section>
-      <section className="space">
+      {/* <section className="space">
         <div className="container z-index-common">
           <div className="row gy-30 justify-content-center">
             <div className="col-xl-4 col-lg-6">
@@ -2037,7 +1187,7 @@ const Index1 = () => {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       <section className>
         <div className="container">
@@ -2059,17 +1209,19 @@ const Index1 = () => {
                   </div>
                 </div>
                 <div className="row gy-30 justify-content-xxl-start justify-content-center">
+                  {products.map((product) =>(
                   <div className="col-xxl-6 col-xl-12 col-lg-6 mt-3">
-                    <div className="ot-product list-view style-border">
+                    <div className="ot-product list-view style-border"
+                    key={product.id}>
                       <div className="product-img">
-                        <img src={postCard8} alt="Product Image" />
+                        <img src={product.thumbnail} alt="Product Image" />
                       </div>
                       <div className="product-content">
                         <h3 className="box-title">
-                          <a href="/shopdetails">Beige One-Piece Dress</a>
+                          <a href={`/shopdetails/${product.id}`}>{product.productname}</a>
                         </h3>
                         <span className="price">
-                          $19.00<del>$26.99</del>
+                          ${product.currentprice}<del>${product.previousprice}</del>
                         </span>
                         <div
                           className="star-rating"
@@ -2092,7 +1244,7 @@ const Index1 = () => {
                             <i className="fa-light fa-arrows-cross"></i>
                           </button>
                           <a
-                            href="#QuickView"
+                            href={`/shopdetails/${product.id}`}
                             className="icon-btn popup-content"
                           >
                             <i className="far fa-eye"></i>
@@ -2105,234 +1257,7 @@ const Index1 = () => {
                       </div>
                     </div>
                   </div>
-                  <div className="col-xxl-6 col-xl-12 col-lg-6 my-2">
-                    <div className="ot-product list-view style-border">
-                      <div className="product-img">
-                        <img src={postCard10} alt="Product Image" />
-                      </div>
-                      <div className="product-content">
-                        <h3 className="box-title">
-                          <a href="/shopdetails">Playtime Excitement!</a>
-                        </h3>
-                        <span className="price">
-                          $26.00<del>$26.99</del>
-                        </span>
-                        <div
-                          className="star-rating"
-                          role="img"
-                          aria-label="Rated 5.00 out of 5"
-                        >
-                          <span>
-                            Rated <strong className="rating">5.00</strong> out
-                            of 5 based on <span className="rating">1</span>{" "}
-                            customer rating
-                          </span>
-                        </div>
-                      </div>
-                      <div className="product-action-wrap align-self-center">
-                        <div className="actions">
-                          <a href="/wishlist" className="icon-btn">
-                            <i className="far fa-heart"></i>
-                          </a>
-                          <button className="icon-btn">
-                            <i className="fa-light fa-arrows-cross"></i>
-                          </button>
-                          <a
-                            href="#QuickView"
-                            className="icon-btn popup-content"
-                          >
-                            <i className="far fa-eye"></i>
-                          </a>
-                        </div>
-                        <a href="/shop" className="ot-btn style7">
-                          <i className="fa-light fa-basket-shopping me-1"></i>{" "}
-                          Add To Cart
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-xxl-6 col-xl-12 col-lg-6 my-2">
-                    <div className="ot-product list-view style-border">
-                      <div className="product-img">
-                        <img src={postCard3} alt="Product Image" />
-                      </div>
-                      <div className="product-content">
-                        <h3 className="box-title">
-                          <a href="/shopdetails">The Playtime Excitement!</a>
-                        </h3>
-                        <span className="price">
-                          $30.00<del>$39.99</del>
-                        </span>
-                        <div
-                          className="star-rating"
-                          role="img"
-                          aria-label="Rated 5.00 out of 5"
-                        >
-                          <span>
-                            Rated <strong className="rating">5.00</strong> out
-                            of 5 based on <span className="rating">1</span>{" "}
-                            customer rating
-                          </span>
-                        </div>
-                      </div>
-                      <div className="product-action-wrap align-self-center">
-                        <div className="actions">
-                          <a href="/wishlist" className="icon-btn">
-                            <i className="far fa-heart"></i>
-                          </a>
-                          <button className="icon-btn">
-                            <i className="fa-light fa-arrows-cross"></i>
-                          </button>
-                          <a
-                            href="#QuickView"
-                            className="icon-btn popup-content"
-                          >
-                            <i className="far fa-eye"></i>
-                          </a>
-                        </div>
-                        <a href="/shop" className="ot-btn style7">
-                          <i className="fa-light fa-basket-shopping me-1"></i>{" "}
-                          Add To Cart
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-xxl-6 col-xl-12 col-lg-6 my-2">
-                    <div className="ot-product list-view style-border">
-                      <div className="product-img">
-                        <img src={postCard11} alt="Product Image" />
-                      </div>
-                      <div className="product-content">
-                        <h3 className="box-title">
-                          <a href="/shopdetails">White One-Piece Dress</a>
-                        </h3>
-                        <span className="price">$15.00</span>
-                        <div
-                          className="star-rating"
-                          role="img"
-                          aria-label="Rated 5.00 out of 5"
-                        >
-                          <span>
-                            Rated <strong className="rating">5.00</strong> out
-                            of 5 based on <span className="rating">1</span>{" "}
-                            customer rating
-                          </span>
-                        </div>
-                      </div>
-                      <div className="product-action-wrap align-self-center">
-                        <div className="actions">
-                          <a href="/wishlist" className="icon-btn">
-                            <i className="far fa-heart"></i>
-                          </a>
-                          <button className="icon-btn">
-                            <i className="fa-light fa-arrows-cross"></i>
-                          </button>
-                          <a
-                            href="#QuickView"
-                            className="icon-btn popup-content"
-                          >
-                            <i className="far fa-eye"></i>
-                          </a>
-                        </div>
-                        <a href="shop.html" className="ot-btn style7">
-                          <i className="fa-light fa-basket-shopping me-1"></i>{" "}
-                          Add To Cart
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-xxl-6 col-xl-12 col-lg-6 my-2">
-                    <div className="ot-product list-view style-border">
-                      <div className="product-img">
-                        <img src={postCard5} alt="Product Image" />
-                      </div>
-                      <div className="product-content">
-                        <h3 className="box-title">
-                          <a href="/shopdetails">Ultricies At Torquent Dui</a>
-                        </h3>
-                        <span className="price">
-                          $19.00<del>$26.99</del>
-                        </span>
-                        <div
-                          className="star-rating"
-                          role="img"
-                          aria-label="Rated 5.00 out of 5"
-                        >
-                          <span>
-                            Rated <strong className="rating">5.00</strong> out
-                            of 5 based on <span className="rating">1</span>{" "}
-                            customer rating
-                          </span>
-                        </div>
-                      </div>
-                      <div className="product-action-wrap align-self-center">
-                        <div className="actions">
-                          <a href="/wishlist" className="icon-btn">
-                            <i className="far fa-heart"></i>
-                          </a>
-                          <button className="icon-btn">
-                            <i className="fa-light fa-arrows-cross"></i>
-                          </button>
-                          <a
-                            href="#QuickView"
-                            className="icon-btn popup-content"
-                          >
-                            <i className="far fa-eye"></i>
-                          </a>
-                        </div>
-                        <a href="/shop" className="ot-btn style7">
-                          <i className="fa-light fa-basket-shopping me-1"></i>{" "}
-                          Add To Cart
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-xxl-6 col-xl-12 col-lg-6 my-2">
-                    <div className="ot-product list-view style-border">
-                      <div className="product-img">
-                        <img src={postCard6} alt="Product Image" />
-                      </div>
-                      <div className="product-content">
-                        <h3 className="box-title">
-                          <a href="/shopdetails">Tinci Dunt Pharetra Soda</a>
-                        </h3>
-                        <span className="price">
-                          $12.00<del>$19.99</del>
-                        </span>
-                        <div
-                          className="star-rating"
-                          role="img"
-                          aria-label="Rated 5.00 out of 5"
-                        >
-                          <span>
-                            Rated <strong className="rating">5.00</strong> out
-                            of 5 based on <span className="rating">1</span>{" "}
-                            customer rating
-                          </span>
-                        </div>
-                      </div>
-                      <div className="product-action-wrap align-self-center">
-                        <div className="actions">
-                          <a href="/wishlist" className="icon-btn">
-                            <i className="far fa-heart"></i>
-                          </a>
-                          <button className="icon-btn">
-                            <i className="fa-light fa-arrows-cross"></i>
-                          </button>
-                          <a
-                            href="#QuickView"
-                            className="icon-btn popup-content"
-                          >
-                            <i className="far fa-eye"></i>
-                          </a>
-                        </div>
-                        <a href="/shop" className="ot-btn style7">
-                          <i className="fa-light fa-basket-shopping me-1"></i>{" "}
-                          Add To Cart
-                        </a>
-                      </div>
-                    </div>
-                  </div>
+                  ))}
                 </div>
               </div>
             </div>
@@ -2355,7 +1280,7 @@ const Index1 = () => {
           </div>
         </div>
       </section>
-      <section className="space">
+      <section className="space mt-3">
         <div className="container">
           <div className="row justify-content-xl-between justify-content-center align-items-center">
             <div className="col-xxl-4 col-lg-6 col-md-8">
@@ -2406,10 +1331,12 @@ const Index1 = () => {
             </div>
           </div>
           <div className="row gy-30 filter-active">
+            {products.map((product) =>(
             <div className="col-xxl-auto col-lg-4 col-md-6 filter-item cat3">
-              <div className="ot-product product-grid">
+              <div className="ot-product product-grid"
+              key={product.id}>
                 <div className="product-img">
-                  <img src={postCard1} alt="Product Image" />
+                  <img src={product.thumbnail} alt="Product Image" />
                   <span className="product-tag">
                     <span className="tag">Hot</span>
                     <span className="offer">-30%</span>
@@ -2421,17 +1348,17 @@ const Index1 = () => {
                     <button className="icon-btn">
                       <i className="fa-light fa-arrows-cross"></i>
                     </button>
-                    <a href="#QuickView" className="icon-btn popup-content">
+                    <a href={`/shopdetails/${product.id}`} className="icon-btn popup-content">
                       <i className="far fa-eye"></i>
                     </a>
                   </div>
                 </div>
                 <div className="product-content">
                   <h3 className="box-title">
-                    <a href="/shopdetails">White One-Piece Dress</a>
+                    <a href={`/shopdetails/${product.id}`}>{product.productname}</a>
                   </h3>
                   <span className="price">
-                    $19.00 <del>$26.99</del>
+                     ${product.currentprice}<del>${product.previousprice}</del>
                   </span>
                   <div className="woocommerce-product-rating">
                     <div
@@ -2449,10 +1376,10 @@ const Index1 = () => {
                 </div>
                 <div className="product-hover-content">
                   <h3 className="box-title">
-                    <a href="/shopdetails">White One-Piece Dress</a>
+                    <a href={`/shopdetails/${product.id}`}>{product.productname}</a>
                   </h3>
                   <span className="price">
-                    $19.00 <del>$26.99</del>
+                    ${product.currentprice}<del>${product.previousprice}</del>
                   </span>
                   <div className="woocommerce-product-rating">
                     <div
@@ -2474,578 +1401,7 @@ const Index1 = () => {
                 </div>
               </div>
             </div>
-            <div className="col-xxl-auto col-lg-4 col-md-6 filter-item cat2">
-              <div className="ot-product product-grid">
-                <div className="product-img">
-                  <img src={postCard2} alt="Product Image" />
-                  <div className="actions">
-                    <a href="/wishlist" className="icon-btn">
-                      <i className="far fa-heart"></i>
-                    </a>
-                    <button className="icon-btn">
-                      <i className="fa-light fa-arrows-cross"></i>
-                    </button>
-                    <a href="#QuickView" className="icon-btn popup-content">
-                      <i className="far fa-eye"></i>
-                    </a>
-                  </div>
-                </div>
-                <div className="product-content">
-                  <h3 className="box-title">
-                    <a href="/shopdetails">Tinci Dunt Pharetra Soda</a>
-                  </h3>
-                  <span className="price">$30.00</span>
-                  <div className="woocommerce-product-rating">
-                    <div
-                      className="star-rating"
-                      role="img"
-                      aria-label="Rated 5.00 out of 5"
-                    >
-                      <span>
-                        Rated <strong className="rating">5.00</strong> out of 5
-                        based on <span className="rating">1</span> customer
-                        rating
-                      </span>
-                    </div>
-                  </div>
-                </div>
-                <div className="product-hover-content">
-                  <h3 className="box-title">
-                    <a href="/shopdetails">Tinci Dunt Pharetra Soda</a>
-                  </h3>
-                  <span className="price">$30.00</span>
-                  <div className="woocommerce-product-rating">
-                    <div
-                      className="star-rating"
-                      role="img"
-                      aria-label="Rated 5.00 out of 5"
-                    >
-                      <span>
-                        Rated <strong className="rating">5.00</strong> out of 5
-                        based on <span className="rating">1</span> customer
-                        rating
-                      </span>
-                    </div>
-                  </div>
-                  <a className="ot-btn" href="/cart">
-                    <i className="fa-light fa-basket-shopping me-1"></i> Add To
-                    Cart
-                  </a>
-                </div>
-              </div>
-            </div>
-            <div className="col-xxl-auto col-lg-4 col-md-6 filter-item cat1 cat4">
-              <div className="ot-product product-grid">
-                <div className="product-img">
-                  <img src={postCard3} alt="Product Image" />
-                  <span className="product-tag">-19%</span>
-                  <div className="actions">
-                    <a href="/wishlist" className="icon-btn">
-                      <i className="far fa-heart"></i>
-                    </a>
-                    <button className="icon-btn">
-                      <i className="fa-light fa-arrows-cross"></i>
-                    </button>
-                    <a href="#QuickView" className="icon-btn popup-content">
-                      <i className="far fa-eye"></i>
-                    </a>
-                  </div>
-                </div>
-                <div className="product-content">
-                  <h3 className="box-title">
-                    <a href="/shopdetails">The Playtime Excitement!</a>
-                  </h3>
-                  <span className="price">
-                    $30.00 <del>$39.99</del>
-                  </span>
-                  <div className="woocommerce-product-rating">
-                    <div
-                      className="star-rating"
-                      role="img"
-                      aria-label="Rated 5.00 out of 5"
-                    >
-                      <span>
-                        Rated <strong className="rating">5.00</strong> out of 5
-                        based on <span className="rating">1</span> customer
-                        rating
-                      </span>
-                    </div>
-                  </div>
-                </div>
-                <div className="product-hover-content">
-                  <h3 className="box-title">
-                    <a href="/shopdetails">The Playtime Excitement!</a>
-                  </h3>
-                  <span className="price">
-                    $30.00 <del>$39.99</del>
-                  </span>
-                  <div className="woocommerce-product-rating">
-                    <div
-                      className="star-rating"
-                      role="img"
-                      aria-label="Rated 5.00 out of 5"
-                    >
-                      <span>
-                        Rated <strong className="rating">5.00</strong> out of 5
-                        based on <span className="rating">1</span> customer
-                        rating
-                      </span>
-                    </div>
-                  </div>
-                  <a className="ot-btn" href="/cart">
-                    <i className="fa-light fa-basket-shopping me-1"></i> Add To
-                    Cart
-                  </a>
-                </div>
-              </div>
-            </div>
-            <div className="col-xxl-auto col-lg-4 col-md-6 filter-item cat2">
-              <div className="ot-product product-grid">
-                <div className="product-img">
-                  <img src={postCard4} alt="Product Image" />
-                  <span className="product-tag"></span>
-                  <div className="actions">
-                    <a href="/wishlist" className="icon-btn">
-                      <i className="far fa-heart"></i>
-                    </a>
-                    <button className="icon-btn">
-                      <i className="fa-light fa-arrows-cross"></i>
-                    </button>
-                    <a href="#QuickView" className="icon-btn popup-content">
-                      <i className="far fa-eye"></i>
-                    </a>
-                  </div>
-                </div>
-                <div className="product-content">
-                  <h3 className="box-title">
-                    <a href="/shopdetails">Brown Lather Carriage</a>
-                  </h3>
-                  <span className="price">
-                    $19.00 <del>$27.00</del>
-                  </span>
-                  <div className="woocommerce-product-rating">
-                    <div
-                      className="star-rating"
-                      role="img"
-                      aria-label="Rated 5.00 out of 5"
-                    >
-                      <span>
-                        Rated <strong className="rating">5.00</strong> out of 5
-                        based on <span className="rating">1</span> customer
-                        rating
-                      </span>
-                    </div>
-                  </div>
-                </div>
-                <div className="product-hover-content">
-                  <h3 className="box-title">
-                    <a href="/shopdetails">Brown Lather Carriage</a>
-                  </h3>
-                  <span className="price">
-                    $19.00 <del>$27.00</del>
-                  </span>
-                  <div className="woocommerce-product-rating">
-                    <div
-                      className="star-rating"
-                      role="img"
-                      aria-label="Rated 5.00 out of 5"
-                    >
-                      <span>
-                        Rated <strong className="rating">5.00</strong> out of 5
-                        based on <span className="rating">1</span> customer
-                        rating
-                      </span>
-                    </div>
-                  </div>
-                  <a className="ot-btn" href="cart.html">
-                    <i className="fa-light fa-basket-shopping me-1"></i> Add To
-                    Cart
-                  </a>
-                </div>
-              </div>
-            </div>
-            <div className="col-xxl-auto col-lg-4 col-md-6 filter-item cat3 cat1">
-              <div className="ot-product product-grid">
-                <div className="product-img">
-                  <img src={postCard5} alt="Product Image" />
-                  <span className="product-tag">-12%</span>
-                  <div className="actions">
-                    <a href="/wishlist" className="icon-btn">
-                      <i className="far fa-heart"></i>
-                    </a>
-                    <button className="icon-btn">
-                      <i className="fa-light fa-arrows-cross"></i>
-                    </button>
-                    <a href="#QuickView" className="icon-btn popup-content">
-                      <i className="far fa-eye"></i>
-                    </a>
-                  </div>
-                </div>
-                <div className="product-content">
-                  <h3 className="box-title">
-                    <a href="/shopdetails">Ultricies At Torquent Dui</a>
-                  </h3>
-                  <span className="price">
-                    $12.00 <del>$19.99</del>
-                  </span>
-                  <div className="woocommerce-product-rating">
-                    <div
-                      className="star-rating"
-                      role="img"
-                      aria-label="Rated 5.00 out of 5"
-                    >
-                      <span>
-                        Rated <strong className="rating">5.00</strong> out of 5
-                        based on <span className="rating">1</span> customer
-                        rating
-                      </span>
-                    </div>
-                  </div>
-                </div>
-                <div className="product-hover-content">
-                  <h3 className="box-title">
-                    <a href="/shopdetails">Ultricies At Torquent Dui</a>
-                  </h3>
-                  <span className="price">
-                    $12.00 <del>$19.99</del>
-                  </span>
-                  <div className="woocommerce-product-rating">
-                    <div
-                      className="star-rating"
-                      role="img"
-                      aria-label="Rated 5.00 out of 5"
-                    >
-                      <span>
-                        Rated <strong className="rating">5.00</strong> out of 5
-                        based on <span className="rating">1</span> customer
-                        rating
-                      </span>
-                    </div>
-                  </div>
-                  <a className="ot-btn" href="/cart">
-                    <i className="fa-light fa-basket-shopping me-1"></i> Add To
-                    Cart
-                  </a>
-                </div>
-              </div>
-            </div>
-            <div className="col-xxl-auto col-lg-4 col-md-6 filter-item cat4 cat1 cat2">
-              <div className="ot-product product-grid">
-                <div className="product-img">
-                  <img src={postCard6} alt="Product Image" />
-                  <span className="product-tag">-12%</span>
-                  <div className="actions">
-                    <a href="/wishlist" className="icon-btn">
-                      <i className="far fa-heart"></i>
-                    </a>
-                    <button className="icon-btn">
-                      <i className="fa-light fa-arrows-cross"></i>
-                    </button>
-                    <a href="#QuickView" className="icon-btn popup-content">
-                      <i className="far fa-eye"></i>
-                    </a>
-                  </div>
-                </div>
-                <div className="product-content">
-                  <h3 className="box-title">
-                    <a href="/shopdetails">The Playtime Excitement!</a>
-                  </h3>
-                  <span className="price">
-                    $26.00 <del>$30.99</del>
-                  </span>
-                  <div className="woocommerce-product-rating">
-                    <div
-                      className="star-rating"
-                      role="img"
-                      aria-label="Rated 5.00 out of 5"
-                    >
-                      <span>
-                        Rated <strong className="rating">5.00</strong> out of 5
-                        based on <span className="rating">1</span> customer
-                        rating
-                      </span>
-                    </div>
-                  </div>
-                </div>
-                <div className="product-hover-content">
-                  <h3 className="box-title">
-                    <a href="/shopdetails">The Playtime Excitement!</a>
-                  </h3>
-                  <span className="price">
-                    $26.00 <del>$30.99</del>
-                  </span>
-                  <div className="woocommerce-product-rating">
-                    <div
-                      className="star-rating"
-                      role="img"
-                      aria-label="Rated 5.00 out of 5"
-                    >
-                      <span>
-                        Rated <strong className="rating">5.00</strong> out of 5
-                        based on <span className="rating">1</span> customer
-                        rating
-                      </span>
-                    </div>
-                  </div>
-                  <a className="ot-btn" href="cart.html">
-                    <i className="fa-light fa-basket-shopping me-1"></i> Add To
-                    Cart
-                  </a>
-                </div>
-              </div>
-            </div>
-            <div className="col-xxl-auto col-lg-4 col-md-6 filter-item cat2 cat1 cat4">
-              <div className="ot-product product-grid">
-                <div className="product-img">
-                  <img src={postCard7} alt="Product Image" />
-                  <span className="product-tag"></span>
-                  <div className="actions">
-                    <a href="/wishlist" className="icon-btn">
-                      <i className="far fa-heart"></i>
-                    </a>
-                    <button className="icon-btn">
-                      <i className="fa-light fa-arrows-cross"></i>
-                    </button>
-                    <a href="#QuickView" className="icon-btn popup-content">
-                      <i className="far fa-eye"></i>
-                    </a>
-                  </div>
-                </div>
-                <div className="product-content">
-                  <h3 className="box-title">
-                    <a href="/shopdetails">Quilted Wind Jacket</a>
-                  </h3>
-                  <span className="price">
-                    $12.00 <del>$19.99</del>
-                  </span>
-                  <div className="woocommerce-product-rating">
-                    <div
-                      className="star-rating"
-                      role="img"
-                      aria-label="Rated 5.00 out of 5"
-                    >
-                      <span>
-                        Rated <strong className="rating">5.00</strong> out of 5
-                        based on <span className="rating">1</span> customer
-                        rating
-                      </span>
-                    </div>
-                  </div>
-                </div>
-                <div className="product-hover-content">
-                  <h3 className="box-title">
-                    <a href="/shopdetails.">Quilted Wind Jacket</a>
-                  </h3>
-                  <span className="price">
-                    $12.00 <del>$19.99</del>
-                  </span>
-                  <div className="woocommerce-product-rating">
-                    <div
-                      className="star-rating"
-                      role="img"
-                      aria-label="Rated 5.00 out of 5"
-                    >
-                      <span>
-                        Rated <strong className="rating">5.00</strong> out of 5
-                        based on <span className="rating">1</span> customer
-                        rating
-                      </span>
-                    </div>
-                  </div>
-                  <a className="ot-btn" href="cart.html">
-                    <i className="fa-light fa-basket-shopping me-1"></i> Add To
-                    Cart
-                  </a>
-                </div>
-              </div>
-            </div>
-            <div className="col-xxl-auto col-lg-4 col-md-6 filter-item cat3">
-              <div className="ot-product product-grid">
-                <div className="product-img">
-                  <img src={postCard8} alt="Product Image" />
-                  <span className="product-tag"></span>
-                  <div className="actions">
-                    <a href="/wishlist" className="icon-btn">
-                      <i className="far fa-heart"></i>
-                    </a>
-                    <button className="icon-btn">
-                      <i className="fa-light fa-arrows-cross"></i>
-                    </button>
-                    <a href="#QuickView" className="icon-btn popup-content">
-                      <i className="far fa-eye"></i>
-                    </a>
-                  </div>
-                </div>
-                <div className="product-content">
-                  <h3 className="box-title">
-                    <a href="/shopdetails">The Playtime Excitement!</a>
-                  </h3>
-                  <span className="price">$30.00</span>
-                  <div className="woocommerce-product-rating">
-                    <div
-                      className="star-rating"
-                      role="img"
-                      aria-label="Rated 5.00 out of 5"
-                    >
-                      <span>
-                        Rated <strong className="rating">5.00</strong> out of 5
-                        based on <span className="rating">1</span> customer
-                        rating
-                      </span>
-                    </div>
-                  </div>
-                </div>
-                <div className="product-hover-content">
-                  <h3 className="box-title">
-                    <a href="/shopdetails">The Playtime Excitement!</a>
-                  </h3>
-                  <span className="price">$30.00</span>
-                  <div className="woocommerce-product-rating">
-                    <div
-                      className="star-rating"
-                      role="img"
-                      aria-label="Rated 5.00 out of 5"
-                    >
-                      <span>
-                        Rated <strong className="rating">5.00</strong> out of 5
-                        based on <span className="rating">1</span> customer
-                        rating
-                      </span>
-                    </div>
-                  </div>
-                  <a className="ot-btn" href="/cart">
-                    <i className="fa-light fa-basket-shopping me-1"></i> Add To
-                    Cart
-                  </a>
-                </div>
-              </div>
-            </div>
-            <div className="col-xxl-auto col-lg-4 col-md-6 filter-item cat4">
-              <div className="ot-product product-grid">
-                <div className="product-img">
-                  <img src={postCard9} alt="Product Image" />
-                  <span className="product-tag"></span>
-                  <div className="actions">
-                    <a href="/wishlist" className="icon-btn">
-                      <i className="far fa-heart"></i>
-                    </a>
-                    <button className="icon-btn">
-                      <i className="fa-light fa-arrows-cross"></i>
-                    </button>
-                    <a href="#QuickView" className="icon-btn popup-content">
-                      <i className="far fa-eye"></i>
-                    </a>
-                  </div>
-                </div>
-                <div className="product-content">
-                  <h3 className="box-title">
-                    <a href="/shopdetails">Brown Lather Carriage</a>
-                  </h3>
-                  <span className="price">$19.00 - $27.00</span>
-                  <div className="woocommerce-product-rating">
-                    <div
-                      className="star-rating"
-                      role="img"
-                      aria-label="Rated 5.00 out of 5"
-                    >
-                      <span>
-                        Rated <strong className="rating">5.00</strong> out of 5
-                        based on <span className="rating">1</span> customer
-                        rating
-                      </span>
-                    </div>
-                  </div>
-                </div>
-                <div className="product-hover-content">
-                  <h3 className="box-title">
-                    <a href="/shopdetails">Brown Lather Carriage</a>
-                  </h3>
-                  <span className="price">$19.00 - $27.00</span>
-                  <div className="woocommerce-product-rating">
-                    <div
-                      className="star-rating"
-                      role="img"
-                      aria-label="Rated 5.00 out of 5"
-                    >
-                      <span>
-                        Rated <strong className="rating">5.00</strong> out of 5
-                        based on <span className="rating">1</span> customer
-                        rating
-                      </span>
-                    </div>
-                  </div>
-                  <a className="ot-btn" href="/cart">
-                    <i className="fa-light fa-basket-shopping me-1"></i> Add To
-                    Cart
-                  </a>
-                </div>
-              </div>
-            </div>
-            <div className="col-xxl-auto col-lg-4 col-md-6 filter-item cat3 cat2">
-              <div className="ot-product product-grid">
-                <div className="product-img">
-                  <img src={postCard10} alt="Product Image" />
-                  <span className="product-tag">-12%</span>
-                  <div className="actions">
-                    <a href="/wishlist" className="icon-btn">
-                      <i className="far fa-heart"></i>
-                    </a>
-                    <button className="icon-btn">
-                      <i className="fa-light fa-arrows-cross"></i>
-                    </button>
-                    <a href="#QuickView" className="icon-btn popup-content">
-                      <i className="far fa-eye"></i>
-                    </a>
-                  </div>
-                </div>
-                <div className="product-content">
-                  <h3 className="box-title">
-                    <a href="/shopdetails">Playtime Excitement!</a>
-                  </h3>
-                  <span className="price">
-                    $12.00 <del>$19.99</del>
-                  </span>
-                  <div className="woocommerce-product-rating">
-                    <div
-                      className="star-rating"
-                      role="img"
-                      aria-label="Rated 5.00 out of 5"
-                    >
-                      <span>
-                        Rated <strong className="rating">5.00</strong> out of 5
-                        based on <span className="rating">1</span> customer
-                        rating
-                      </span>
-                    </div>
-                  </div>
-                </div>
-                <div className="product-hover-content">
-                  <h3 className="box-title">
-                    <a href="/shopdetails">Playtime Excitement!</a>
-                  </h3>
-                  <span className="price">
-                    $12.00 <del>$19.99</del>
-                  </span>
-                  <div className="woocommerce-product-rating">
-                    <div
-                      className="star-rating"
-                      role="img"
-                      aria-label="Rated 5.00 out of 5"
-                    >
-                      <span>
-                        Rated <strong className="rating">5.00</strong> out of 5
-                        based on <span className="rating">1</span> customer
-                        rating
-                      </span>
-                    </div>
-                  </div>
-                  <a className="ot-btn" href="/cart">
-                    <i className="fa-light fa-basket-shopping me-1"></i> Add To
-                    Cart
-                  </a>
-                </div>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </section>
@@ -3205,57 +1561,57 @@ const Index1 = () => {
           </div>
         </div>
       </section>
-      <Slider {...brandLogos}>
-      <div className="swiper-slide">
-                <div className="brand-card">
-                  <a target="_blank" href="https://themeforest.net/">
-                    <img src={brandLogo1} alt="Brand Logo" />
-                  </a>
-                </div>
-              </div>
-              <div className="swiper-slide">
-                <div className="brand-card">
-                  <a target="_blank" href="https://themeforest.net/">
-                    <img src={brandLogo2} alt="Brand Logo" />
-                  </a>
-                </div>
-              </div>
-              <div className="swiper-slide">
-                <div className="brand-card">
-                  <a target="_blank" href="https://themeforest.net/">
-                    <img src={brandLogo3} alt="Brand Logo" />
-                  </a>
-                </div>
-              </div>
-              <div className="swiper-slide">
-                <div className="brand-card">
-                  <a target="_blank" href="https://themeforest.net/">
-                    <img src={brandLogo4} alt="Brand Logo" />
-                  </a>
-                </div>
-              </div>
-              <div className="swiper-slide">
-                <div className="brand-card">
-                  <a target="_blank" href="https://themeforest.net/">
-                    <img src={brandLogo5} alt="Brand Logo" />
-                  </a>
-                </div>
-              </div>
-              <div className="swiper-slide">
-                <div className="brand-card">
-                  <a target="_blank" href="https://themeforest.net/">
-                    <img src={brandLogo6} alt="Brand Logo" />
-                  </a>
-                </div>
-              </div>
-              <div className="swiper-slide">
-                <div className="brand-card">
-                  <a target="_blank" href="https://themeforest.net/">
-                    <img src={brandLogo7} alt="Brand Logo" />
-                  </a>
-                </div>
-              </div>
-    </Slider>
+      {/* <Slider {...brandLogo}>
+        <div className="swiper-slide">
+          <div className="brand-card">
+            <a target="_blank" href="https://themeforest.net/">
+             <img src={babyMart} alt="Babymart" />
+            </a>
+          </div>
+        </div>
+        <div className="swiper-slide">
+          <div className="brand-card">
+            <a target="_blank" href="https://themeforest.net/">
+             <img src={babyMart} alt="Babymart" />
+            </a>
+          </div>
+        </div>
+       <div className="swiper-slide">
+          <div className="brand-card">
+            <a target="_blank" href="https://themeforest.net/">
+             <img src={babyMart} alt="Babymart" />
+            </a>
+          </div>
+        </div>
+       <div className="swiper-slide">
+          <div className="brand-card">
+            <a target="_blank" href="https://themeforest.net/">
+             <img src={babyMart} alt="Babymart" />
+            </a>
+          </div>
+        </div>
+        <div className="swiper-slide">
+          <div className="brand-card">
+            <a target="_blank" href="https://themeforest.net/">
+             <img src={babyMart}  alt="Babymart" />
+            </a>
+          </div>
+        </div>
+       <div className="swiper-slide">
+          <div className="brand-card">
+            <a target="_blank" href="https://themeforest.net/">
+             <img src={babyMart} alt="Babymart" />
+            </a>
+          </div>
+        </div>
+       <div className="swiper-slide">
+          <div className="brand-card">
+            <a target="_blank" href="https://themeforest.net/">
+             <img src={babyMart} alt="Babymart" />
+            </a>
+          </div>
+        </div>
+      </Slider> */}
       <Footer />
     </>
   );

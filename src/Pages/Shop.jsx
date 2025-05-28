@@ -36,12 +36,12 @@ const Shop = () => {
       className="breadcumb-wrapper">
       <div className="container">
         <div className="breadcumb-content">
-          <h1 className="breadcumb-title" >Shop Grid</h1>
+          <h1 className="breadcumb-title" >Store</h1>
           <ul className="breadcumb-menu">
             <li  >
               <a href="/index">Home</a>
             </li>
-            <li  >Shop Grid</li>
+            <li  >Store</li>
           </ul>
         </div>
       </div>
@@ -142,7 +142,7 @@ const Shop = () => {
                                  </div>
                                  <div className="product-content">
                                    <h3 className="box-title">
-                                     <a href="/shopdetails"
+                                     <a href={`/shopdetails/${product.id}`}
                                      >{product.productname}</a
                                      >
                                    </h3>
@@ -163,7 +163,7 @@ const Shop = () => {
                                  </div>
                                  <div className="product-hover-content">
                                    <h3 className="box-title">
-                                     <a href="/shopdetails"
+                                     <a href={`/shopdetails/${product.id}`}
                                      >{product.productname}</a
                                      >
                                    </h3>

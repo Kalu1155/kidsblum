@@ -1,4 +1,5 @@
 import React from "react";
+import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import Navbar from "../Component/Navbar";
 import Footer from "../Component/Footer";
@@ -6,14 +7,21 @@ import data from '../../Data.json';
 import cartImage6 from "../assets/img/product/post-card1-6.png";
 import commentAuthor from "../assets/img/blog/comment-author-5.png";
 
-const ShopDetials = () => {
-const { id } = useParams();
-console.log(data);
-const { products } = data;
-const product = products.find(p => p.id.toString() === id);
-console.log(product);
-  if (!product) return <div>Product not found.</div>;
 
+const ShopDetials = () => {
+   const { id } = useParams();
+  const { products } = data; 
+  const product = products.find(p => p.id.toString() === id);
+
+  const [mainImage, setMainImage] = useState(null);
+
+  useEffect(() => {
+    if (product) {
+      setMainImage(product.thumbnail);
+    }
+  }, [product]);
+
+  if (!product) return <div>Product not found</div>;
 
   return (
     <>
@@ -21,7 +29,7 @@ console.log(product);
       <div className="breadcumb-wrapper">
         <div className="container">
           <div className="breadcumb-content">
-            <h1 className="breadcumb-title">Shop Details</h1>
+            <h1 className="breadcumb-title">{product.productname}</h1>
             <ul className="breadcumb-menu">
               <li data-delay="100">
                 <a href="/index">Home</a>
@@ -34,14 +42,34 @@ console.log(product);
       <section className="product-details mt-50 space-extra-bottom">
         <div className="container">
           <div className="row gx-60 gy-50">
-            <div className="col-lg-6">
-              <div className="product-big-img">
-                <div className="img">
-                  <img src={product.thumbnail} alt="Product Image" />
-                </div>
+            {/* Left: Thumbnails */}
+             <div className="col-md-1 d-flex flex-row flex-sm-column gap-2 overflow-auto">
+  {product.images.map((imgObj, i) => (
+    <div className="img-thumbnail border" key={i}>
+      <img
+        src={imgObj.src}
+        alt={`Product Thumbnail ${i + 1}`}
+        className="img-fluid"
+        style={{ maxHeight: '80px', cursor: 'pointer' }}
+        onClick={() => setMainImage(imgObj.src)}
+      />
+    </div>
+  ))}
+</div>
+
+
+            {/* Center: Big Product Image */}
+            <div className="col-md-5 align-items-center justify-content-center">
+              <div className="product-big-img border p-3">
+                <img
+                   src={mainImage}
+                  alt="Main Product"
+                  className="img-fluid"
+                  style={{ maxHeight: '400px' }}
+                />
               </div>
             </div>
-            <div className="col-xxl-6 align-self-center">
+            <div className="col-md-6 align-self-center">
               <div className="product-about">
                 <h2 className="product-title">{product.productname}</h2>
                 <div className="product-rating">
@@ -63,7 +91,7 @@ console.log(product);
                   </a>
                 </div>
                 <p className="text">
-                 {product.description}
+                  {product.description}
                 </p>
                 <p className="price">
                   ${product.currentprice}<del>${product.previousprice}</del>
@@ -121,7 +149,7 @@ console.log(product);
                   </span>
                   <span>
                     Tags: <a href="shop.html">{product.yeartags.join(', ')}</a>
-                   
+
                   </span>
                   <span className="posted_in">
                     Category: <a href="shop.html">{product.category.join(', ')}</a>
