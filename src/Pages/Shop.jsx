@@ -8,7 +8,7 @@ import cartImage5 from "../assets/img/product/post-card1-5.png"
 import cartImage6 from "../assets/img/product/post-card1-6.png"
 import cartImage31 from "../assets/img/product/post-card1-31.png"
 const Shop = () => {
-  const url = "http://localhost:3000/products";
+  const url = "/data.json";
     const [products, setProducts] = useState([]);
   
     useEffect(() => {
@@ -16,7 +16,8 @@ const Shop = () => {
         try {
           const response = await fetch(url);
           const data = await response.json();
-          const formattedProducts = data.map((product) => ({
+          const productData=data.products
+          const formattedProducts = productData.map((product) => ({
             id: product.id,
             productname: product.productname,
             currentprice: product.currentprice,
