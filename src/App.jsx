@@ -17,6 +17,7 @@ import Shop from "./Pages/Shop";
 import ShopDetials from "./Pages/ShopDetials";
 import Testimonial from "./Pages/Testimonial";
 import WishList from "./Pages/WishList";
+import Category from "./Pages/Category.jsx";
 
 function App() {
   return (
@@ -37,6 +38,7 @@ function App() {
         <Route  path="/errorpjsno-image" element={<ErrorPjsNoImage/>}/>
         <Route  path="/faq" element={<Faq/>}/>
         <Route  path="/shop" element={<Shop/>}/>
+        <Route  path="/category" element={<Category/>}/>
         <Route  path="/shopdetails/:id" element={<ShopDetials/>}/>
         <Route  path="/testimonail" element={<Testimonial/>}/>
         <Route  path="/wishlist" element={<WishList/>}/>

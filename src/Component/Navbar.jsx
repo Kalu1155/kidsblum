@@ -1,11 +1,17 @@
-import {useState} from 'react'
+import { useEffect, useState } from 'react';
 import babyMart from "../assets/img/mainlogo.png";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
-  // const [menu, openMenu] = useState(false);
-  //   const [showMenu, setShowmenu] = useState(true);
-  //   const [closeMenu, setClosemenu] = useState(true);
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setMenuOpen(!menuOpen);
+  };
+
+  useEffect(() => {
+  document.body.style.overflow = menuOpen ? 'hidden' : 'auto';
+}, [menuOpen]);
 
 
   return (
@@ -32,7 +38,7 @@ const Navbar = () => {
               </div>
               <div className="col-auto">
                 <p className="header-notice">
-                  Bidsblum Flash Discount: Starting at
+                  Kidsblum Flash Discount: Starting at
                   <span className="text-title">30% Off</span>
                 </p>
               </div>
@@ -43,16 +49,13 @@ const Navbar = () => {
                       <i className="fal fa-comments-question"></i>
                       <a href="/contact">Help</a>
                     </li>
-                    {/* <li>
-                      <i className="fal fa-user"></i>{" "}
-                      <a href="/contact">Login</a>
-                    </li> */}
                   </ul>
                 </div>
               </div>
             </div>
           </div>
         </div>
+
         <div className="sticky-wrapper">
           <div className="menu-area">
             <div className="container">
@@ -67,43 +70,17 @@ const Navbar = () => {
                 <div className="col-auto">
                   <nav className="main-menu d-none d-lg-inline-block">
                     <ul>
-                      <li className="">
-                        <Link to="/">Home</Link>
-                      </li>
-                      <li className="">
-                        <Link to="/shop">Store</Link>
-                      </li>
+                      <li><Link to="/">Home</Link></li>
+                      <li><Link to="/shop">Store</Link></li>
                       <li className="menu-item-has-children">
                         <Link to="/">KidsBlum</Link>
                         <ul className="sub-menu">
-                          <li>
-                            <a href="/about">About</a>
-                          </li>
-                          <li>
-                            <a href="/faq">Faq</a>
-                          </li>
-                          <li>
-                            <a href="/testimonial">Testimonial</a>
-                          </li>  
+                          <li><a href="/about">About</a></li>
+                          <li><a href="/faq">Faq</a></li>
+                          <li><a href="/testimonial">Testimonial</a></li>
                         </ul>
                       </li>
-                      {/* <li className="menu-item-has-children">
-                        <a href="#">Blog</a>
-                        <ul className="sub-menu">
-                          <li>
-                            <a href="/blog">Blog</a>
-                          </li>
-                          <li>
-                            <a href="/blogrid">Blog Grid Style</a>
-                          </li>
-                          <li>
-                            <a href="/blogdetails">Blog Details</a>
-                          </li>
-                        </ul>
-                      </li> */}
-                      <li>
-                        <Link to="/shop">Events</Link>
-                      </li>
+                      <li><Link to="/shop">Events</Link></li>
                     </ul>
                   </nav>
                 </div>
@@ -111,18 +88,8 @@ const Navbar = () => {
                   <div className="header-button">
                     <form action="#" className="header-form">
                       <div className="form-group">
-                        <select
-                          name="category"
-                          id="category"
-                          className="form-select nice-select"
-                        >
-                          <option
-                            value
-                            // selected="default"
-                            disabled="disabled"
-                          >
-                            Categories
-                          </option>
+                        <select name="category" id="category" className="form-select nice-select">
+                          <option disabled>Categories</option>
                           <option value="game-and-toy">Game And toy</option>
                           <option value="kid-clothing">Kid Clothing</option>
                           <option value="kid-books">Kid Books</option>
@@ -142,75 +109,17 @@ const Navbar = () => {
                         <i className="far fa-search"></i>
                       </button>
                     </form>
-                    {/* <a href="/wishlist" className="icon-btn d-none d-sm-block">
-                      <span className="badge">3</span>{" "}
-                      <i className="far fa-heart"></i>
-                    </a> */}
+
                     <a href="/cart" className="icon-btn d-none d-sm-block">
                       <span className="badge">5</span>{" "}
                       <i className="far fa-basket-shopping"></i>
                     </a>
-                    {/* <button
-                      type="button"
-                      className="icon-btn sideMenuInfo d-none d-lg-block"
-                    >
-                      <i className="far fa-bars-sort"></i>
-                    </button> */}
 
-  <div class="ot-menu-wrapper">
-      <div class="ot-menu-area text-center">
-        <button class="ot-menu-toggle"><i class="fal fa-times"></i></button>
-        <div class="mobile-logo">
-          <a href="index.html"
-            ><img src={babyMart} alt="Babymart"
-          /></a>
-        </div>
-        <div class="ot-mobile-menu">
-          <ul>
-            <li class="menu-item-has-children">
-              <a href="index.html">Home</a>
-              <ul class="sub-menu">
-                <li><a href="index.html">Home One</a></li>
-                <li><a href="index-2.html">Home Two</a></li>
-                <li><a href="index-3.html">Home Three</a></li>
-              </ul>
-            </li>
-            <li class="menu-item-has-children">
-              <a href="#">Shop</a>
-              <ul class="sub-menu">
-                <li><a href="shop.html">Shop</a></li>
-                <li><a href="shop-details.html">Shop Details</a></li>
-                <li><a href="cart.html">Cart</a></li>
-                <li><a href="checkout.html">Checkout</a></li>
-                <li><a href="wishlist.html">Wishlist</a></li>
-              </ul>
-            </li>
-            <li class="menu-item-has-children">
-              <a href="#">Pages</a>
-              <ul class="sub-menu">
-                <li><a href="about.html">About</a></li>
-                <li><a href="faq.html">Faq</a></li>
-                <li><a href="testimonial.html">Testimonial</a></li>
-                <li><a href="error.html">Error Page</a></li>
-              </ul>
-            </li>
-            <li class="menu-item-has-children">
-              <a href="#">Blog</a>
-              <ul class="sub-menu">
-                <li><a href="blog.html">Blog</a></li>
-                <li><a href="blog-grid.html">Blog Grid Style</a></li>
-                <li><a href="blog-details.html">Blog Details</a></li>
-              </ul>
-            </li>
-            <li><a href="/contact">Contact Us</a></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-
+                    {/* Mobile menu toggle */}
                     <button
                       type="button"
                       className="ot-menu-toggle d-block d-lg-none"
+                      onClick={toggleMenu}
                     >
                       <i className="far fa-bars"></i>
                     </button>
@@ -220,9 +129,49 @@ const Navbar = () => {
             </div>
           </div>
         </div>
+
+        {/* Mobile menu area */}
+        <div className={`ot-menu-wrapper ${menuOpen ? "active" : "block"}`}>
+          <div className="ot-menu-area text-center">
+            <button className="ot-menu-toggle" onClick={toggleMenu}>
+              <i className="fal fa-times"></i>
+            </button>
+            <div className="mobile-logo">
+              <a href="/"><img src={babyMart} alt="Babymart" /></a>
+            </div>
+            <div className="ot-mobile-menu">
+              <ul>
+                <li className="menu-item-has-children">
+                  <a href="/index1">Home</a>
+                </li>
+                <li className="menu-item-has-children">
+                  <a href="/shop">Shop</a>
+                </li>
+                <li className="menu-item-has-children">
+                  <a href="#">Pages</a>
+                  <ul className="sub-menu">
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="faq.html">Faq</a></li>
+                    <li><a href="testimonial.html">Testimonial</a></li>
+                    <li><a href="error.html">Error Page</a></li>
+                  </ul>
+                </li>
+                <li className="menu-item-has-children">
+                  <a href="#">Blog</a>
+                  <ul className="sub-menu">
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="blog-grid.html">Blog Grid Style</a></li>
+                    <li><a href="blog-details.html">Blog Details</a></li>
+                  </ul>
+                </li>
+                <li><a href="/contact">Contact Us</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
       </header>
     </>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;
