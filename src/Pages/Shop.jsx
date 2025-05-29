@@ -10,6 +10,7 @@ import cartImage31 from "../assets/img/product/post-card1-31.png"
 const Shop = () => {
   const url = "/data.json";
     const [products, setProducts] = useState([]);
+    
   
     useEffect(() => {
       const fetchProducts = async () => {
