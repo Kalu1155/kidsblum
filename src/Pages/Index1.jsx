@@ -583,7 +583,7 @@ const Index1 = () => {
                 </div>
               </div>
             </div>
-             <div>
+            <div>
               <div className="swiper-slide">
                 <div className="category-card2">
                   <Link to="/category?ages=8-9"
@@ -601,7 +601,7 @@ const Index1 = () => {
               </div>
             </div>
 
-           <div>
+            <div>
               <div className="swiper-slide">
                 <div className="category-card2">
                   <Link to="/category?ages=9-10"
@@ -702,17 +702,17 @@ const Index1 = () => {
                       </span>
                       <div className="actions">
                         <a href="/wishlist" className="icon-btn">
-                          <i className="far fa-heart"></i>
+                          <Link to={`/shopdetails/${product.id}`} className="icon-btn"><i className="far fa-eye"></i></Link>
                         </a>
                         <button className="icon-btn">
                           <i className="fa-light fa-arrows-cross"></i>
                         </button>
-                        <Link to={`/shopdetails/${product.id}`}><i className="far fa-eye"></i></Link>
+
                       </div>
                     </div>
                     <div className="product-content">
                       <h3 className="box-title">
-                         <Link to={`/shopdetails/${product.id}`}>{product.productname}</Link>
+                        <Link to={`/shopdetails/${product.id}`}>{product.productname}</Link>
                       </h3>
                       <span className="price">
                         ${product.currentprice}<del>${product.previousprice}</del>
@@ -994,14 +994,13 @@ const Index1 = () => {
                           <button className="icon-btn">
                             <i className="fa-light fa-arrows-cross"></i>
                           </button>
-                          <a href={`/shopdetails/${product.id}`} className="icon-btn popup-content">
-                            <i className="far fa-eye"></i>
-                          </a>
+                          <Link to={`/shopdetails/${product.id}`} className="icon-btn popup-content"> <i className="far fa-eye"></i></Link>
+
                         </div>
                       </div>
                       <div className="product-content">
                         <h3 className="box-title">
-                          <a href={`/shopdetails/${product.id}`}>{product.productname}</a>
+                          <Link to={`/shopdetails/${product.id}`}>{product.productname}</Link>
                         </h3>
                         <span className="price">${product.currentprice}</span>
                         <div className="woocommerce-product-rating">
@@ -1020,7 +1019,7 @@ const Index1 = () => {
                       </div>
                       <div className="product-hover-content">
                         <h3 className="box-title">
-                          <a href={`/shopdetails/${product.id}`}>{product.productname}</a>
+                          <Link to={`/shopdetails/${product.id}`}>{product.productname}</Link>
                         </h3>
                         <span className="price">${product.currentprice}</span>
                         <div className="woocommerce-product-rating">
@@ -1183,57 +1182,6 @@ const Index1 = () => {
           </div>
         </div>
       </section>
-      {/* <section className="space">
-        <div className="container z-index-common">
-          <div className="row gy-30 justify-content-center">
-            <div className="col-xl-4 col-lg-6">
-              <div className="offer-card mega-hover" data-bg-src={ctaBg1}>
-                <h3 className="box-title text-white">
-                  Learning Toys
-                  <br />
-                  For kids
-                </h3>
-                <span className="h6 box-subtitle text-white">
-                  15% Off on Kids' Toys and Gifts!
-                </span>
-                <a href="/shopdetails" className="ot-btn style-white">
-                  Shop Now<i className="fas fa-arrow-right ms-2"></i>
-                </a>
-              </div>
-            </div>
-            <div className="col-xl-4 col-lg-6">
-              <div className="offer-card mega-hover" data-bg-src={ctaBg3}>
-                <h3 className="box-title text-white">
-                  Brown Lather
-                  <br />
-                  Carriage
-                </h3>
-                <span className="h6 box-subtitle text-white">
-                  And get your 25% discount now!
-                </span>
-                <a href="/shopdetails" className="ot-btn style-white">
-                  Shop Now<i className="fas fa-arrow-right ms-2"></i>
-                </a>
-              </div>
-            </div>
-            <div className="col-xl-4 col-lg-6">
-              <div className="offer-card mega-hover" data-bg-src={ctaBg3}>
-                <h3 className="box-title text-white">
-                  Utricles Torqueing
-                  <br />
-                  For Kids
-                </h3>
-                <span className="h6 box-subtitle text-white">
-                  And get your 15% discount now!
-                </span>
-                <a href="/shopdetails" className="ot-btn style-white">
-                  Shop Now<i className="fas fa-arrow-right ms-2"></i>
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section> */}
 
       <section className>
         <div className="container">
@@ -1264,7 +1212,7 @@ const Index1 = () => {
                         </div>
                         <div className="product-content">
                           <h3 className="box-title">
-                            <a href={`/shopdetails/${product.id}`}>{product.productname}</a>
+                            <Link to={`/shopdetails/${product.id}`}>{product.productname}</Link>
                           </h3>
                           <span className="price">
                             ${product.currentprice}<del>${product.previousprice}</del>
@@ -1289,12 +1237,7 @@ const Index1 = () => {
                             <button className="icon-btn">
                               <i className="fa-light fa-arrows-cross"></i>
                             </button>
-                            <a
-                              href={`/shopdetails/${product.id}`}
-                              className="icon-btn popup-content"
-                            >
-                              <i className="far fa-eye"></i>
-                            </a>
+                            <Link to={`/shopdetails/${product.id}`} className="icon-btn popup-content"> <i className="far fa-eye"></i></Link>
                           </div>
                           <a href="/shop" className="ot-btn style7">
                             <i className="fa-light fa-basket-shopping me-1"></i>{" "}
@@ -1394,14 +1337,13 @@ const Index1 = () => {
                       <button className="icon-btn">
                         <i className="fa-light fa-arrows-cross"></i>
                       </button>
-                      <a href={`/shopdetails/${product.id}`} className="icon-btn popup-content">
-                        <i className="far fa-eye"></i>
-                      </a>
+                      <Link to={`/shopdetails/${product.id}`}  className="icon-btn popup-content"><i className="far fa-eye"></i></Link>
+                     
                     </div>
                   </div>
                   <div className="product-content">
                     <h3 className="box-title">
-                      <a href={`/shopdetails/${product.id}`}>{product.productname}</a>
+                      <Link to={`/shopdetails/${product.id}`}>{product.productname}</Link>
                     </h3>
                     <span className="price">
                       ${product.currentprice}<del>${product.previousprice}</del>
@@ -1422,7 +1364,7 @@ const Index1 = () => {
                   </div>
                   <div className="product-hover-content">
                     <h3 className="box-title">
-                      <a href={`/shopdetails/${product.id}`}>{product.productname}</a>
+                      <Link to={`/shopdetails/${product.id}`}>{product.productname}</Link>
                     </h3>
                     <span className="price">
                       ${product.currentprice}<del>${product.previousprice}</del>

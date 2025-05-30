@@ -137,17 +137,13 @@ const Shop = () => {
                               <button className="icon-btn">
                                 <i className="fa-light fa-arrows-cross"></i>
                               </button>
-
-                              <a href={`/shopdetails/${product.id}`} className="icon-btn popup-content"
-                              ><i className="far fa-eye"></i
-                              ></a>
+                              <Link to={`/shopdetails/${product.id}`} className="icon-btn popup-content"><i className="far fa-eye"></i
+                              ></Link>
                             </div>
                           </div>
                           <div className="product-content">
                             <h3 className="box-title">
-                              <a href={`/shopdetails/${product.id}`}
-                              >{product.productname}</a
-                              >
+                              <Link to={`/shopdetails/${product.id}`}>{product.productname}</Link>
                             </h3>
                             <span className="price">{product.currentprice}</span>
                             <div className="woocommerce-product-rating">
@@ -166,9 +162,7 @@ const Shop = () => {
                           </div>
                           <div className="product-hover-content">
                             <h3 className="box-title">
-                              <a href={`/shopdetails/${product.id}`}
-                              >{product.productname}</a
-                              >
+                              <Link to={`/shopdetails/${product.id}`}>{product.productname}</Link>
                             </h3>
                             <span className="price">{product.currentprice}</span>
                             <div className="woocommerce-product-rating">
