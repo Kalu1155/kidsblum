@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { Link } from "react-router-dom";
 import babyMart from "../assets/img/mainlogo.png";
 import cartImage from "../assets/img/product/post-card1-1.png";
 import cartImage2 from "../assets/img/product/post-card1-2.png";
@@ -462,97 +463,157 @@ const Index1 = () => {
             <div>
               <div className="swiper-slide">
                 <div className="category-card2">
-                  <a
-                    href="/category?ages=1-2"
-                    className="box-img"
-                    data-theme-color="#C9E5EC"
-                  >
+                  <Link to="/category?ages=1-2"
+                    className="box-img">
                     <div
                       className="box-img-border"
                       data-theme-color="#E6F5F9"
                     ></div>
                     <img src={categoryCard21} alt="Image" />
-                  </a>
+                  </Link>
                   <h3 className="box-title">
-                    <a href="/shop">0-2 Years</a>
+                    <Link to="/category?ages=1-2">0-2Years</Link>
+                  </h3>
+                </div>
+              </div>
+            </div>
+            <div>
+              <div className="swiper-slide">
+                <div className="category-card2">
+                  <Link to="/category?ages=2-3"
+                    className="box-img">
+                    <div
+                      className="box-img-border"
+                      data-theme-color="#E6F5F9"
+                    ></div>
+                    <img src={categoryCard22} alt="Image" />
+                  </Link>
+                  <h3 className="box-title">
+                    <Link to="/category?ages=2-3">2-3Years</Link>
                   </h3>
                 </div>
               </div>
             </div>
 
             <div>
-              <div className="category-card2">
-                <a
-                  href="/category?ages=2-3"
-                  className="box-img"
-                  data-theme-color="#E5C3EB"
-                >
-                  <div
-                    className="box-img-border"
-                    data-theme-color="#F6E6F9"
-                  ></div>
-                  <img src={categoryCard22} alt="Image" />
-                </a>
-                <h3 className="box-title">
-                  <a href="/shop">3-4 Years</a>
-                </h3>
-              </div>
-            </div>
-
-            <div>
-              <div className="category-card2">
-                <a
-                  href="/shop"
-                  className="box-img"
-                  data-theme-color="#BEEAB8"
-                >
-                  <div
-                    className="box-img-border"
-                    data-theme-color="#E0FBDD"
-                  ></div>
-                  <img src={categoryCard23} alt="Image" />
-                </a>
-                <h3 className="box-title">
-                  <a href="/shop">4-7 Years</a>
-                </h3>
-              </div>
-            </div>
-
-            <div>
-              <div className="category-card2">
-                <a
-                  href="/shop"
-                  className="box-img"
-                  data-theme-color="#FFBBBB"
-                >
-                  <div
-                    className="box-img-border"
-                    data-theme-color="#FFDCDC"
-                  ></div>
-                  <img src={categoryCard24} alt="Image" />
-                </a>
-                <h3 className="box-title">
-                  <a href="/shop">7-10 Years</a>
-                </h3>
+              <div className="swiper-slide">
+                <div className="category-card2">
+                  <Link to="/category?ages=3-4"
+                    className="box-img">
+                    <div
+                      className="box-img-border"
+                      data-theme-color="#E6F5F9"
+                    ></div>
+                    <img src={categoryCard23} alt="Image" />
+                  </Link>
+                  <h3 className="box-title">
+                    <Link to="/category?ages=3-4">3-4Years</Link>
+                  </h3>
+                </div>
               </div>
             </div>
 
             <div>
               <div className="swiper-slide">
                 <div className="category-card2">
-                  <a
-                    href="/shop"
-                    className="box-img"
-                    data-theme-color="#EEE78D"
-                  >
+                  <Link to="/category?ages=4-5"
+                    className="box-img">
                     <div
                       className="box-img-border"
-                      data-theme-color="#FFFABD"
+                      data-theme-color="#E6F5F9"
+                    ></div>
+                    <img src={categoryCard24} alt="Image" />
+                  </Link>
+                  <h3 className="box-title">
+                    <Link to="/category?ages=4-5">4-5Years</Link>
+                  </h3>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <div className="swiper-slide">
+                <div className="category-card2">
+                  <Link to="/category?ages=5-6"
+                    className="box-img">
+                    <div
+                      className="box-img-border"
+                      data-theme-color="#E6F5F9"
                     ></div>
                     <img src={categoryCard25} alt="Image" />
-                  </a>
+                  </Link>
                   <h3 className="box-title">
-                    <a href="/shop">12+ Years</a>
+                    <Link to="/category?ages=5-6">5-6Years</Link>
+                  </h3>
+                </div>
+              </div>
+            </div>
+            <div>
+              <div className="swiper-slide">
+                <div className="category-card2">
+                  <Link to="/category?ages=6-7"
+                    className="box-img">
+                    <div
+                      className="box-img-border"
+                      data-theme-color="#E6F5F9"
+                    ></div>
+                    <img src={categoryCard24} alt="Image" />
+                  </Link>
+                  <h3 className="box-title">
+                    <Link to="/category?ages=6-7">6-7Years</Link>
+                  </h3>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <div className="swiper-slide">
+                <div className="category-card2">
+                  <Link to="/category?ages=7-8"
+                    className="box-img">
+                    <div
+                      className="box-img-border"
+                      data-theme-color="#E6F5F9"
+                    ></div>
+                    <img src={categoryCard25} alt="Image" />
+                  </Link>
+                  <h3 className="box-title">
+                    <Link to="/category?ages=7-8">7-8Years</Link>
+                  </h3>
+                </div>
+              </div>
+            </div>
+             <div>
+              <div className="swiper-slide">
+                <div className="category-card2">
+                  <Link to="/category?ages=8-9"
+                    className="box-img">
+                    <div
+                      className="box-img-border"
+                      data-theme-color="#E6F5F9"
+                    ></div>
+                    <img src={categoryCard24} alt="Image" />
+                  </Link>
+                  <h3 className="box-title">
+                    <Link to="/category?ages=8-9">8-9Years</Link>
+                  </h3>
+                </div>
+              </div>
+            </div>
+
+           <div>
+              <div className="swiper-slide">
+                <div className="category-card2">
+                  <Link to="/category?ages=9-10"
+                    className="box-img">
+                    <div
+                      className="box-img-border"
+                      data-theme-color="#E6F5F9"
+                    ></div>
+                    <img src={categoryCard25} alt="Image" />
+                  </Link>
+                  <h3 className="box-title">
+                    <Link to="/category?ages=9-10">9-10Years</Link>
                   </h3>
                 </div>
               </div>
@@ -646,17 +707,12 @@ const Index1 = () => {
                         <button className="icon-btn">
                           <i className="fa-light fa-arrows-cross"></i>
                         </button>
-                        <a
-                          href={`/shopdetails/${product.id}`}
-                          className="icon-btn popup-content"
-                        >
-                          <i className="far fa-eye"></i>
-                        </a>
+                        <Link to={`/shopdetails/${product.id}`}><i className="far fa-eye"></i></Link>
                       </div>
                     </div>
                     <div className="product-content">
                       <h3 className="box-title">
-                        <a href={`/shopdetails/${product.id}`}>{product.productname}</a>
+                         <Link to={`/shopdetails/${product.id}`}>{product.productname}</Link>
                       </h3>
                       <span className="price">
                         ${product.currentprice}<del>${product.previousprice}</del>
@@ -672,7 +728,7 @@ const Index1 = () => {
                     </div>
                     <div className="product-hover-content">
                       <h3 className="box-title">
-                        <a href={`/shopdetails/${product.id}`}>{product.productname}</a>
+                        <Link to={`/shopdetails/${product.id}`}>{product.productname}</Link>
                       </h3>
                       <span className="price">
                         ${product.currentprice}<del>${product.previousprice}</del>
