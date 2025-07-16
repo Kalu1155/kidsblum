@@ -4,35 +4,126 @@ import { Link } from "react-router-dom";
 import Navbar from '../Component/Navbar'
 import Footer from '../Component/Footer'
 import cartImage1 from "../assets/img/product/post-card1-1.png"
-import cartImage2 from "../assets/img/product/post-card1-2.png";
 import cartImage5 from "../assets/img/product/post-card1-5.png"
 import cartImage6 from "../assets/img/product/post-card1-6.png"
 import cartImage31 from "../assets/img/product/post-card1-31.png"
-const Shop = () => {
-  const url = "https://jtb.ecmserver.com.ng/api/kids-blum";
-  const [products, setProducts] = useState([]);
 
+import { useCart } from '../context/CartContext';
+
+const Shop = () => {
+
+  const [products, setProducts] = useState([]);
+  const [filteredProducts, setFilteredProducts] = useState([]);
+
+  const [categories, setCategories] = useState([]);
+  const [ageOptions, setAgeOptions] = useState([]);
+  const [sizeOptions, setSizeOptions] = useState([]);
+
+  const [selectedCategories, setSelectedCategories] = useState([]);
+  const [selectedAges, setSelectedAges] = useState([]);
+  const [selectedSizes, setSelectedSizes] = useState([]);
+
+  const [priceRange, setPriceRange] = useState([0, 0]);
+  const [selectedRange, setSelectedRange] = useState([0, 0]);
+
+
+  // const url = "https://jtb.ecmserver.com.ng/api/kids-blum";
+
+  const { addToCart } = useCart()
+
+useEffect(() => {
+  const fetchData = async () => {
+    try {
+      const res = await fetch("https://jtb.ecmserver.com.ng/api/kids-blum");
+      const data = await res.json();
+
+      // Extract data safely from the API response
+      const productData = Array.isArray(data.products) ? data.products : [];
+      const categoryData = Array.isArray(data.category) ? data.category : [];
+      const sizeData = Array.isArray(data.size) ? data.size : [];
+
+      // Format products
+      const formattedProducts = productData.map((product) => ({
+        ...product,
+        currentPrice: product.price?.default?.currentprice || 0,
+      }));
+
+      // Collect all unique yeartags from sizeData
+      const allAgeTags = new Set();
+      sizeData.forEach((s) => s.yeartags?.forEach((age) => allAgeTags.add(age)));
+
+      // Set all state
+      setProducts(formattedProducts);
+      setFilteredProducts(formattedProducts);
+      setCategories(categoryData.map((c) => c.name));
+      setSizeOptions(sizeData.map((s) => s.size));
+      setAgeOptions(Array.from(allAgeTags));
+
+      // Price range
+      const allPrices = formattedProducts.map(
+        (p) => p.price?.default?.currentprice || 0
+      );
+      const min = Math.min(...allPrices);
+      const max = Math.max(...allPrices);
+      setPriceRange([min, max]);
+      setSelectedRange([min, max]);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
+
+  fetchData();
+}, []);
+
+
+
+  const toggleFilter = (value, setter, state) => {
+    setter(state.includes(value) ? state.filter((v) => v !== value) : [...state, value]);
+  };
 
   useEffect(() => {
-    const fetchProducts = async () => {
-      try {
-        const response = await fetch(url);
-        const data = await response.json();
-        console.log(data);
-        const productData = data.products
-        const formattedProducts = productData.map((product) => ({
-          id: product.id,
-          productname: product.productname,
-          currentprice: product.currentprice,
-          thumbnail: product.thumbnail,
-        }));
-        setProducts(formattedProducts);
-      } catch (error) {
-        console.error("Error fetching products:", error);
-      }
-    };
-    fetchProducts();
-  }, []);
+    const filtered = Array.isArray(products)
+      ? products.filter((product) => {
+        const [min, max] = selectedRange;
+
+        // Dynamic price per age
+        let currentPrice = product.price?.default?.currentprice;
+
+        if (selectedAges.length > 0) {
+          for (const age of selectedAges) {
+            if (product.price?.[age]?.currentprice) {
+              currentPrice = product.price[age].currentprice;
+              break;
+            }
+          }
+        }
+
+        const matchPrice = currentPrice >= min && currentPrice <= max;
+        const matchCategory =
+          selectedCategories.length === 0 ||
+          product.category?.some((cat) => selectedCategories.includes(cat));
+
+        const matchAge =
+          selectedAges.length === 0 ||
+          product.yeartags?.some((tag) => selectedAges.includes(tag));
+
+        const matchSize =
+          selectedSizes.length === 0 ||
+          product.size?.some((s) => selectedSizes.includes(s));
+
+        return matchPrice && matchCategory && matchAge && matchSize;
+      })
+      : [];
+
+    setFilteredProducts(filtered); // ✅ safe here
+  }, [selectedCategories, selectedAges, selectedSizes, selectedRange, products]);
+
+
+  const handleAddToCartFromShop = (product) => {
+    addToCart(product, 1, "default", product.colors?.[0]);
+    alert(`${product.productname} added to cart!`);
+  };
+
   return (
     <>
       <Navbar />
@@ -60,55 +151,8 @@ const Shop = () => {
                 >
                   <div className="col-auto">
                     <p className="woocommerce-result-count">
-                      Showing 1-3 Of 34 Results
+                      Showing {products.length} Results
                     </p>
-                  </div>
-                  <div className="col-auto">
-                    <div className="sort-bar-ordering-wrap">
-                      <form className="woocommerce-ordering" method="get">
-                        <select
-                          name="orderby"
-                          className="orderby"
-                          aria-label="Shop order"
-                        >
-                          <option value="menu_order" selected="selected">
-                            Default Sorting
-                          </option>
-                          <option value="popularity">Sort by popularity</option>
-                          <option value="rating">Sort by average rating</option>
-                          <option value="date">Sort by latest</option>
-                          <option value="price">
-                            Sort by price: low to high
-                          </option>
-                          <option value="price-desc">
-                            Sort by price: high to low
-                          </option>
-                        </select>
-                      </form>
-                      <div className="nav" role="tablist">
-                        <a
-                          href="#"
-                          id="tab-shop-list"
-                          data-bs-toggle="tab"
-                          data-bs-target="#tab-list"
-                          role="tab"
-                          aria-controls="tab-list"
-                          aria-selected="false"
-                        ><i className="fa-solid fa-list"></i
-                        ></a>
-                        <a
-                          className="active"
-                          href="#"
-                          id="tab-shop-grid"
-                          data-bs-toggle="tab"
-                          data-bs-target="#tab-grid"
-                          role="tab"
-                          aria-controls="tab-grid"
-                          aria-selected="true"
-                        ><i className="far fa-grid-2"></i
-                        ></a>
-                      </div>
-                    </div>
                   </div>
                 </div>
               </div>
@@ -120,16 +164,15 @@ const Shop = () => {
                   aria-labelledby="tab-shop-grid"
                 >
                   <div className="row gy-30">
-                    {products.map((product) => (
+                    {filteredProducts.map((product) => (
 
                       <div className="col-xxl-4 col-md-5 my-2">
-                        <div
-                          className="ot-product product-grid bg-white"
+                        <div className="ot-product product-grid bg-white"
                           key={product.id}>
-                          <div className="product-img">
+                          <div className="product-img objfit">
                             <img
                               src={product.thumbnail}
-                              alt="Product Image"
+                              alt={product.productname}
                             />
                             <div className="actions">
                               <a href="/wishlist" className="icon-btn"
@@ -146,77 +189,35 @@ const Shop = () => {
                             <h3 className="box-title">
                               <Link to={`/shopdetails/${product.id}`}>{product.productname}</Link>
                             </h3>
-                            <span className="price">{product.currentprice}</span>
-                            <div className="woocommerce-product-rating">
-                              <div
-                                className="star-rating"
-                                role="img"
-                                aria-label="Rated 5.00 out of 5"
-                              >
-                                <span
-                                >Rated <strong className="rating">5.00</strong> out of
-                                  5 based on <span className="rating">1</span> customer
-                                  rating</span
-                                >
-                              </div>
-                            </div>
+                            <span className="price">₦{typeof product.price?.default?.currentprice === 'number'
+                              ? `₦${product.price.default.currentprice.toLocaleString()}`
+                              : '₦N/A'}</span>
                           </div>
                           <div className="product-hover-content">
                             <h3 className="box-title">
                               <Link to={`/shopdetails/${product.id}`}>{product.productname}</Link>
                             </h3>
-                            <span className="price">{product.currentprice}</span>
-                            <div className="woocommerce-product-rating">
-                              <div
-                                className="star-rating"
-                                role="img"
-                                aria-label="Rated 5.00 out of 5"
-                              >
-                                <span
-                                >Rated <strong className="rating">5.00</strong> out of
-                                  5 based on <span className="rating">1</span> customer
-                                  rating</span
-                                >
-                              </div>
-                            </div>
-                            <a className="ot-btn" href="/cart"
-                            ><i className="fa-light fa-basket-shopping me-1"></i> Add
-                              To Cart</a
-                            >
+                            <span className="price">₦{typeof product.price?.default?.currentprice === 'number'
+                              ? `₦${product.price.default.currentprice.toLocaleString()}`
+                              : '₦N/A'}</span>
+                            <button className="ot-btn" onClick={() => handleAddToCartFromShop(product)}>
+                              <i className="fa-light fa-basket-shopping me-1"></i> Add To Cart
+                            </button>
                           </div>
                         </div>
                       </div>
                     ))}
-                  </div>
-                  <div className="ot-pagination text-center mt-40">
-                    <ul>
-                      <li>
-                        <a href="/blog" >Previous</a>
-                      </li>
-                      <li><a href="/blog" >1</a></li>
-                      <li><a href="/blog" >2</a></li>
-                      <li><a href="/blog" >3</a></li>
-                      <li>
-                        <a href="/blog"
-                        ><i className="fas fa-ellipsis"></i
-                        ></a>
-                      </li>
-                      <li><a href="/blog" >Next</a></li>
-                    </ul>
                   </div>
                 </div>
                 <div
                   className="tab-pane fade"
                   id="tab-list"
                   role="tabpanel"
-                  aria-labelledby="tab-shop-list"
-                >
+                  aria-labelledby="tab-shop-list">
                   <div className="row gy-30">
                     <div className="col-12">
                       <div
-                        className="ot-product product-list bg-white"
-
-                      >
+                        className="ot-product product-list bg-white">
                         <div className="product-img">
                           <img
                             src={cartImage5}
@@ -237,13 +238,11 @@ const Shop = () => {
                             <div
                               className="star-rating"
                               role="img"
-                              aria-label="Rated 5.00 out of 5"
-                            >
+                              aria-label="Rated 5.00 out of 5">
                               <span
                               >Rated <strong className="rating">5.00</strong> out of
                                 5 based on <span className="rating">1</span> customer
-                                rating</span
-                              >
+                                rating</span>
                             </div>
                           </div>
                           <p className="content">
@@ -275,9 +274,7 @@ const Shop = () => {
                     </div>
                     <div className="col-12">
                       <div
-                        className="ot-product product-list bg-white"
-
-                      >
+                        className="ot-product product-list bg-white">
                         <div className="product-img">
                           <img
                             src={cartImage1}
@@ -474,220 +471,89 @@ const Shop = () => {
                 <div className="widget widget_categories2" >
                   <h3 className="widget_title">Shop By Categories</h3>
                   <ul>
-                    <li>
-                      <input
-                        id="cat-check1"
-                        name="cat-check1"
-                        type="checkbox"
-                        checked="checked"
-                      />
-                      <label for="cat-check1"
-                      >Fashion Kid <span className="checkmark"></span
-                      ></label>
-                      <span className="category-number">(2)</span>
-                    </li>
-                    <li>
-                      <input id="cat-check2" name="cat-check2" type="checkbox" />
-                      <label for="cat-check2"
-                      >Control Toys<span className="checkmark"></span
-                      ></label>
-                      <span className="category-number">(5)</span>
-                    </li>
-                    <li>
-                      <input id="cat-check3" name="cat-check3" type="checkbox" />
-                      <label for="cat-check3"
-                      >Jigsaw Puzzle<span className="checkmark"></span
-                      ></label>
-                      <span className="category-number">(2)</span>
-                    </li>
-                    <li>
-                      <input id="cat-check4" name="cat-check4" type="checkbox" />
-                      <label for="cat-check4"
-                      >Smart Toys<span className="checkmark"></span
-                      ></label>
-                      <span className="category-number">(3)</span>
-                    </li>
-                    <li>
-                      <input id="cat-check5" name="cat-check5" type="checkbox" />
-                      <label for="cat-check5"
-                      >Toy & Game<span className="checkmark"></span
-                      ></label>
-                      <span className="category-number">(2)</span>
-                    </li>
-                    <li>
-                      <input id="cat-check6" name="cat-check6" type="checkbox" />
-                      <label for="cat-check6"
-                      >Indoor Play<span className="checkmark"></span
-                      ></label>
-                      <span className="category-number">(2)</span>
-                    </li>
-                    <li>
-                      <input id="cat-check7" name="cat-check7" type="checkbox" />
-                      <label for="cat-check7"
-                      >Outdoor Toy<span className="checkmark"></span
-                      ></label>
-                      <span className="category-number">(2)</span>
-                    </li>
+                    {categories.map((cat, i) => (
+                      <li key={cat}>
+                        <input
+                          id={`cat-${i}`}
+                          type="checkbox"
+                          checked={selectedCategories.includes(cat)}
+                          onChange={() => toggleFilter(cat, setSelectedCategories, selectedCategories)}
+                        />
+                        <label htmlFor={`cat-${i}`}>{typeof cat === 'string' ? cat : cat?.name}</label>
+                      </li>
+                    ))}
+
                   </ul>
                 </div>
-                <div className="widget widget_price_filter" >
+                <div className="widget widget_price_filter">
                   <h4 className="widget_title">Filter By Price</h4>
                   <div className="price_slider_wrapper">
-                    <div className="price_slider">
-
+                    <div className="price_slider d-flex align-items-center">
+                      <input
+                        type="number"
+                        min={priceRange[0]}
+                        max={priceRange[1]}
+                        value={selectedRange[0]}
+                        onChange={(e) =>
+                          setSelectedRange([parseInt(e.target.value), selectedRange[1]])
+                        }
+                        className="form-control mx-2"
+                        placeholder="Min"
+                      />
+                      <span> - </span>
+                      <input
+                        type="number"
+                        min={priceRange[0]}
+                        max={priceRange[1]}
+                        value={selectedRange[1]}
+                        onChange={(e) =>
+                          setSelectedRange([selectedRange[0], parseInt(e.target.value)])
+                        }
+                        className="form-control mx-2"
+                        placeholder="Max"
+                      />
                     </div>
 
-                    <div className="price_label">
-                      Price: <span className="from">$0</span> -
-                      <span className="to">$70</span>
-                      <button type="submit" className="button ot-btn">Filter</button>
+                    <div className="price_label mt-2">
+                      <span className="from">₦{selectedRange[0].toLocaleString()}</span> -
+                      <span className="to">₦{selectedRange[1].toLocaleString()}</span>
                     </div>
                   </div>
                 </div>
-                <div className="widget widget_categories2" >
+
+                <div className="widget widget_categories2">
                   <h3 className="widget_title">Shop By Age</h3>
                   <ul>
-                    <li>
-                      <input
-                        id="age-check1"
-                        name="age-check1"
-                        type="checkbox"
-                        checked="checked"
-                      />
-                      <label for="age-check1"
-                      >0-3 years <span className="checkmark"></span
-                      ></label>
-                      <span className="category-number">(16)</span>
-                    </li>
-                    <li>
-                      <input id="age-check2" name="age-check2" type="checkbox" />
-                      <label for="age-check2"
-                      >4-5 years <span className="checkmark"></span
-                      ></label>
-                      <span className="category-number">(20)</span>
-                    </li>
-                    <li>
-                      <input id="age-check3" name="age-check3" type="checkbox" />
-                      <label for="age-check3"
-                      >6-7 years<span className="checkmark"></span
-                      ></label>
-                      <span className="category-number">(14)</span>
-                    </li>
-                    <li>
-                      <input id="age-check4" name="age-check4" type="checkbox" />
-                      <label for="age-check4"
-                      >8-9 years <span className="checkmark"></span
-                      ></label>
-                      <span className="category-number">(12)</span>
-                    </li>
-                    <li>
-                      <input id="age-check5" name="age-check5" type="checkbox" />
-                      <label for="age-check5"
-                      >10-11 years <span className="checkmark"></span
-                      ></label>
-                      <span className="category-number">(7)</span>
-                    </li>
-                    <li>
-                      <input id="age-check6" name="age-check6" type="checkbox" />
-                      <label for="age-check6"
-                      >12+ years <span className="checkmark"></span
-                      ></label>
-                      <span className="category-number">(5)</span>
-                    </li>
+                    {ageOptions.map((age, i) => (
+                      <li key={age}>
+                        <input
+                          id={`age-${i}`}
+                          type="checkbox"
+                          checked={selectedAges.includes(age)}
+                          onChange={() => toggleFilter(age, setSelectedAges, selectedAges)}
+                        />
+                        <label htmlFor={`age-${i}`}>{typeof age === 'string' ? `${age} years` : "N/A"}</label>
+                      </li>
+                    ))}
+
                   </ul>
                 </div>
-                <div className="widget widget_categories2" >
+                <div className="widget widget_categories2">
                   <h3 className="widget_title">Shop By Size</h3>
                   <div className="widget-size-wrap">
-                    <a href="#">XL</a> <a href="#">M</a> <a href="#">L</a>
-                    <a href="#">S</a> <a href="#">XS</a>
+                    {sizeOptions.map((size) => (
+                      <a
+                        href="#"
+                        key={size}
+                        className={selectedSizes.includes(size) ? "active-size" : ""}
+                        onClick={(e) => {
+                          e.preventDefault();
+                          toggleFilter(size, setSelectedSizes, selectedSizes);
+                        }}>
+                        {size}
+                      </a>
+                    ))}
                   </div>
-                </div>
-                <div className="widget widget_categories2" >
-                  <h3 className="widget_title">Shop By Rating</h3>
-                  <ul>
-                    <li className="product-rating">
-                      <input
-                        id="rating-check1"
-                        name="rating-check1"
-                        type="checkbox"
-                        checked="checked"
-                      />
-                      <label for="rating-check1">
-                        <span className="rating"
-                        ><i className="fas fa-star"></i>
-                          <i className="fas fa-star"></i> <i className="fas fa-star"></i>
-                          <i className="fas fa-star"></i>
-                          <i className="fas fa-star"></i> </span
-                        >5 only
-                        <span className="checkmark"></span>
-                      </label>
-                    </li>
-                    <li className="product-rating">
-                      <input
-                        id="rating-check2"
-                        name="rating-check2"
-                        type="checkbox"
-                      />
-                      <label for="rating-check2">
-                        <span className="rating"
-                        ><i className="fas fa-star"></i>
-                          <i className="fas fa-star"></i> <i className="fas fa-star"></i>
-                          <i className="fas fa-star"></i>
-                          <i className="far fa-star"></i> </span
-                        >4 & up
-                        <span className="checkmark"></span>
-                      </label>
-                    </li>
-                    <li className="product-rating">
-                      <input
-                        id="rating-check3"
-                        name="rating-check3"
-                        type="checkbox"
-                      />
-                      <label for="rating-check3">
-                        <span className="rating"
-                        ><i className="fas fa-star"></i>
-                          <i className="fas fa-star"></i> <i className="fas fa-star"></i>
-                          <i className="far fa-star"></i>
-                          <i className="far fa-star"></i> </span
-                        >3 & up
-                        <span className="checkmark"></span>
-                      </label>
-                    </li>
-                    <li className="product-rating">
-                      <input
-                        id="rating-check4"
-                        name="rating-check4"
-                        type="checkbox"
-                      />
-                      <label for="rating-check4">
-                        <span className="rating"
-                        ><i className="fas fa-star"></i>
-                          <i className="fas fa-star"></i> <i className="far fa-star"></i>
-                          <i className="far fa-star"></i>
-                          <i className="far fa-star"></i> </span
-                        >2 & up
-                        <span className="checkmark"></span>
-                      </label>
-                    </li>
-                    <li className="product-rating">
-                      <input
-                        id="rating-check5"
-                        name="rating-check5"
-                        type="checkbox"
-                      />
-                      <label for="rating-check5">
-                        <span className="rating"
-                        ><i className="fas fa-star"></i>
-                          <i className="far fa-star"></i> <i className="far fa-star"></i>
-                          <i className="far fa-star"></i>
-                          <i className="far fa-star"></i> </span
-                        >1 & up
-                        <span className="checkmark"></span>
-                      </label>
-                    </li>
-                  </ul>
                 </div>
               </aside>
             </div>

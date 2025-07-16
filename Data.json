@@ -12,7 +12,7 @@
     { "src": "/src/assets/img/product/post-card1-3.png" }
 
   ],
-  "thumbnail": "/src/assets/img/product/post-card1-3.png",
+  "thumbnail": "https://res.cloudinary.com/dvlpsatvf/image/upload/v1750929760/BOWBELL1_ie5yso.jpg",
   "description": "Ipsum dolor sit amet, consectetur adipiscing elit. Donec pulvinar, tortor quis varius pretium est felis scelerisque nulla, vitae placerat justo nunc a massa. Aenean nec montes vestibulum urna vel imperdiet ipsum. Orci varius natoque penatibus magnis dis ridicul parturient montes.",
   "reviews": [],
   "sku": "FTC1020B65D",

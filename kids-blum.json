@@ -1,0 +1,703 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "productname": "Bowbell",
+      "price":{
+        "default":{ 
+          "currentprice": 13000,
+          "previousprice": 26000},
+          "1-2":{ 
+          "currentprice": 13000,
+          "previousprice": 26000},
+          "5-6":{ 
+          "currentprice": 18000,
+          "previousprice": 36000}
+      },
+      "images": [
+        { "src": "https://res.cloudinary.com/dvlpsatvf/image/upload/w_400,f_auto,q_auto/v1750929760/BOWBELL1_ie5yso.jpg" },
+        { "src": "https://res.cloudinary.com/dvlpsatvf/image/upload/w_400,f_auto,q_auto/v1750929799/BOWBELL3_daj3xo.jpg" },
+        { "src": "https://res.cloudinary.com/dvlpsatvf/image/upload/w_400,f_auto,q_auto/v1750929596/BOWBELL_GRP2_dl2n7k.jpg" },
+        { "src": "https://res.cloudinary.com/dvlpsatvf/image/upload/w_400,f_auto,q_auto/v1750929930/BOWBELL2_rjv9fl.jpg" }
+      ],
+      "thumbnail": "https://res.cloudinary.com/dvlpsatvf/image/upload/w_400,f_auto,q_auto/v1750929596/BOWBELL_GRP2_dl2n7k.jpg",
+      "description": "A line dress With beaded bows and puff sleeves",
+      "reviews": [],
+      "sku": "FTC1020B65D",
+      "yeartags": ["1-2", "5-6"],
+      "tags": ["female", "gown"],
+      "category": [ "Fashion Kid"],
+      "gender":"F",
+      "colors": [
+        { "name": "Red", "code": "#c02022" },
+        { "name": "Blue", "code": "#363870" },
+        { "name": "Mint", "code": "#95a8a4" }
+      ],
+      "size":["M"],
+      "pagestatues":"Trending"
+    },
+    {
+      "id": 2,
+      "productname": "Polkaup",
+      "price":{
+        "default":{ 
+          "currentprice": 20000,
+          "previousprice": 40000},
+          "3-4":{ 
+          "currentprice": 20000,
+          "previousprice": 40000},
+          "5-6":{ 
+          "currentprice": 22000,
+          "previousprice": 44000}
+      },
+      "images": [
+        { "src": "https://res.cloudinary.com/dvlpsatvf/image/upload/w_400,f_auto,q_auto/v1750929242/POLKAPOP1_ctzbxn.jpg" },
+        { "src": "https://res.cloudinary.com/dvlpsatvf/image/upload/w_400,f_auto,q_auto/v1750929272/POLKAPOP_GRP3_ngvalg.jpg" },
+        { "src": "https://res.cloudinary.com/dvlpsatvf/image/upload/w_400,f_auto,q_auto/v1750929270/POLKAPOP2_yiwthc.jpg" },
+        { "src": "https://res.cloudinary.com/dvlpsatvf/image/upload/w_400,f_auto,q_auto/v1750929257/POLKAPOP_GRP2_tr9gwn.jpg" }
+      ],
+      "thumbnail": "https://res.cloudinary.com/dvlpsatvf/image/upload/w_400,f_auto,q_auto/v1750929257/POLKAPOP_GRP2_tr9gwn.jpg",
+      "description": "Polka net Long sleeves, with front pockets and tie in front",
+      "reviews": [],
+      "sku": "FTC1020B65D",
+      "yeartags": ["3-4", "5-6"],
+      "tags": ["female", "gown"],
+      "category": [ "Game/Park"],
+      "gender":"F",
+      "colors": [
+        { "name": "Black", "code": "#000000" },
+        { "name": "White", "code": "#BCC3CA" }
+      ],
+      "size":["M"],
+      "pagestatues":"Trending"
+    },
+    {
+      "id": 3,
+      "productname": "Love",
+      "price":{
+        "default":{ 
+          "currentprice": 18000,
+          "previousprice": 36000},
+          "1-2":{ 
+          "currentprice": 18000,
+          "previousprice": 36000},
+          "3-4":{ 
+          "currentprice": 20000,
+          "previousprice": 40000}
+      },
+      "images": [
+        { "src": "https://res.cloudinary.com/dvlpsatvf/image/upload/w_400,f_auto,q_auto/v1750929829/LOVE_GRP1_rnzug9.jpg" },
+        { "src": "https://res.cloudinary.com/dvlpsatvf/image/upload/w_400,f_auto,q_auto/v1750929869/LOVE_GRP2_rxsyrv.jpg" },
+        { "src": "https://res.cloudinary.com/dvlpsatvf/image/upload/w_400,f_auto,q_auto/v1750929913/LOVE2_njdgla.jpg" }
+      ],
+      "thumbnail": "https://res.cloudinary.com/dvlpsatvf/image/upload/w_400,f_auto,q_auto/v1750929913/LOVE2_njdgla.jpg",
+      "description": "Sleeveless with frocks and orange love button detail",
+      "reviews": [],
+      "sku": "FTC1020B65D",
+      "yeartags": ["1-2","3-4"],
+      "tags": ["female", "gown"],
+      "category": [ "Smart Look"],
+      "gender":"F",
+      "colors": [
+        { "name": "Black", "code": "#000000" },
+        { "name": "White", "code": "#BCC3CA" }
+      ],
+      "size":["M"],
+      "pagestatues":"Top"
+    },
+   {
+      "id": 4,
+      "productname": "Peachy",
+      "price":{
+        "default":{ 
+          "currentprice": 25000,
+          "previousprice": 5000},
+          "3-4":{ 
+          "currentprice": 25000,
+          "previousprice": 50000},
+          "5-6":{ 
+          "currentprice": 27000,
+          "previousprice": 54000}
+      },
+      "images": [
+        { "src": "https://res.cloudinary.com/dvlpsatvf/image/upload/w_400,f_auto,q_auto/v1750929697/PEACHY1_jc9nfs.jpg" },
+        { "src": "https://res.cloudinary.com/dvlpsatvf/image/upload/w_400,f_auto,q_auto/v1750929684/PEACHY_GRP1_efw5i2.jpg" }
+      ],
+      "thumbnail": "https://res.cloudinary.com/dvlpsatvf/image/upload/w_400,f_auto,q_auto/v1750929697/PEACHY1_jc9nfs.jpg",
+      "description": "Frock Sleeveless with beaded tie on waist",
+      "reviews": [],
+      "sku": "FTC1020B65D",
+      "yeartags": ["3-4", "5-6"],
+      "tags": ["female", "gown"],
+      "category": [ "Indoor Clothing"],
+            "gender":"F",
+      "colors": [
+        { "name": "Peach", "code": "#FFB6B9" }
+      ],
+      "size":["M"],
+      "pagestatues":"STW"
+    },
+   {
+      "id": 5,
+      "productname": "Greenie",
+      "price":{
+        "default":{ 
+          "currentprice": 25000,
+          "previousprice": 50000},
+          "3-4":{ 
+          "currentprice": 25000,
+          "previousprice": 50000},
+          "5-6":{ 
+          "currentprice": 27000,
+          "previousprice": 54000}
+      },
+      "images": [
+        { "src": "https://res.cloudinary.com/dvlpsatvf/image/upload/w_400,f_auto,q_auto/v1750929951/GREENIE1_qksozl.jpg" },
+        { "src": "https://res.cloudinary.com/dvlpsatvf/image/upload/w_400,f_auto,q_auto/v1750929676/GREENIE_GRP2_tnripx.jpg" },
+        { "src": "https://res.cloudinary.com/dvlpsatvf/image/upload/w_400,f_auto,q_auto/v1750929662/GREENIE_GRP1_wspwef.jpg" }
+      ],
+      "thumbnail": "https://res.cloudinary.com/dvlpsatvf/image/upload/w_400,f_auto,q_auto/v1750929951/GREENIE1_qksozl.jpg",
+      "description": "Frock Sleeveless with beaded tie on waist",
+      "reviews": [],
+      "sku": "FTC1020B65D",
+      "yeartags": ["3-4", "5-6"],
+      "tags": ["female", "gown"],
+      "category": [ "Outdoor Clothing"],
+            "gender":"F",
+      "colors": [
+        { "name": "Emerald green", "code": "#2b5655" }
+      ],
+      "size":["M"],
+      "pagestatues":"Flash"
+    },
+    {
+      "id": 6,
+      "productname": "Blumboy",
+      "price":{
+        "default":{ 
+          "currentprice": 25000,
+          "previousprice": 50000},
+          "1-2":{ 
+          "currentprice": 25000,
+          "previousprice": 50000},
+          "5-6":{ 
+          "currentprice": 27000,
+          "previousprice": 54000}
+      },
+      "images": [
+        { "src": "https://res.cloudinary.com/dvlpsatvf/image/upload/w_400,f_auto,q_auto/v1750929549/blumboy_shirt1_jsoks7.jpg" },
+        { "src": "https://res.cloudinary.com/dvlpsatvf/image/upload/w_400,f_auto,q_auto/v1750929574/BLUMBOY2_mdka7g.jpg" },
+        { "src": "https://res.cloudinary.com/dvlpsatvf/image/upload/w_400,f_auto,q_auto/v1750929541/blumboy_shirt_set2_t9mt4f.jpg" },
+        { "src": "https://res.cloudinary.com/dvlpsatvf/image/upload/w_400,f_auto,q_auto/v1750929549/BLUMBOY_COMBO2_p8mlba.jpg" }
+      ],
+      "thumbnail": "https://res.cloudinary.com/dvlpsatvf/image/upload/w_400,f_auto,q_auto/v1750929549/BLUMBOY_COMBO2_p8mlba.jpg",
+      "description": "Black shirt with stripe and shorts with pocket",
+      "reviews": [],
+      "sku": "FTC1020B65D",
+      "yeartags": ["3-4", "5-6"],
+      "tags": ["female", "gown"],
+      "category": [ "Kids Clothing"],
+       "gender":"M",
+      "colors": [
+        { "name": "Black", "code": "#000000" },
+        { "name": "White", "code": "#BCC3CA" }
+      ],
+      "size":["M"],
+      "pagestatues":"Trending"
+      
+    },
+     {
+      "id": 7,
+      "productname": "XO1",
+      "price":{
+        "default":{ 
+          "currentprice": 10000,
+          "previousprice": 20000},
+          "5-6":{ 
+          "currentprice": 10000,
+          "previousprice": 20000}
+      },
+      "images": [
+        { "src": "https://res.cloudinary.com/dvlpsatvf/image/upload/w_400,f_auto,q_auto/v1750929461/XO1_kid4w1.jpg" }
+      ],
+      "thumbnail": "https://res.cloudinary.com/dvlpsatvf/image/upload/w_400,f_auto,q_auto/v1750929461/XO1_kid4w1.jpg",
+      "description": "Buttoned shirt with classic collar",
+      "reviews": [],
+      "sku": "FTC1020B65D",
+      "yeartags": ["3-4", "5-6"],
+      "tags": ["male", "shirt"],
+      "category": [ "Kids Clothing"],
+       "gender":"M",
+      "colors": [
+        { "name": "Black", "code": "#000000" },
+        { "name": "Orange", "code": "#d89727" }
+      ],
+      "size":["L"],
+      "pagestatues":"Top"
+    },
+     {
+      "id": 8,
+      "productname": "XO3",
+      "price":{
+        "default":{ 
+          "currentprice": 10000,
+          "previousprice": 20000},
+          "5-6":{ 
+          "currentprice": 10000,
+          "previousprice": 20000}
+      },
+      "images": [
+        { "src": "https://res.cloudinary.com/dvlpsatvf/image/upload/w_400,f_auto,q_auto/v1750929461/XO1_kid4w1.jpg" }
+      ],
+      "thumbnail": "https://res.cloudinary.com/dvlpsatvf/image/upload/w_400,f_auto,q_auto/v1750929461/XO1_kid4w1.jpg",
+      "description": "Button shirt with asooke pocket without collar",
+      "reviews": [],
+      "sku": "FTC1020B65D",
+      "yeartags": ["3-4", "5-6"],
+      "tags": ["male", "shirt"],
+      "category": [ "Kids Clothing"],
+       "gender":"M",
+      "colors": [
+        { "name": "Black", "code": "#000000" },
+        { "name": "Orange", "code": "#d89727" }
+      ],
+      "size":["L"],
+      "pagestatues":"STW"
+    },
+    {
+      "id": 9,
+      "productname": "Goldy",
+      "price":{
+        "default":{ 
+          "currentprice": 20000,
+          "previousprice": 40000},
+          "3-4":{ 
+          "currentprice": 20000,
+          "previousprice": 40000},
+          "5-6":{ 
+          "currentprice": 22000,
+          "previousprice": 44000}
+      },
+      "images": [
+        { "src": "https://res.cloudinary.com/dvlpsatvf/image/upload/w_400,f_auto,q_auto/v1750929656/goldy4_kb4ppj.jpg" }
+      ],
+      "thumbnail": "https://res.cloudinary.com/dvlpsatvf/image/upload/w_400,f_auto,q_auto/v1750929656/goldy4_kb4ppj.jpg",
+      "description": "Kimono set with orange puff sleeves and shorts",
+      "reviews": [],
+      "sku": "FTC1020B65D",
+      "yeartags": ["3-4", "5-6"],
+      "tags": ["male", "shirt"],
+      "category": [ "Kids Clothing"],
+      "gender":"F",
+      "colors": [
+        { "name": "Orange", "code": "#a72525"},
+        { "name": "Gold", "code": "#7e341f" }
+      ],
+      "size":["M"],
+      "pagestatues":"Flash"
+    },
+    {
+      "id": 10,
+      "productname": "Bloom_Kimono",
+      "price":{
+        "default":{ 
+          "currentprice": 20000,
+          "previousprice": 40000},
+          "3-4":{ 
+          "currentprice": 20000,
+          "previousprice": 40000},
+          "5-6":{ 
+          "currentprice": 220000,
+          "previousprice": 440000}
+      },
+      "images": [
+        { "src": "https://res.cloudinary.com/dvlpsatvf/image/upload/w_400,f_auto,q_auto/v1750929493/bloom_kimono4_yfimgu.jpg" },
+        { "src": "https://res.cloudinary.com/dvlpsatvf/image/upload/w_400,f_auto,q_auto/v1750929767/bloom_kimono1_p1ayre.jpg" },
+        { "src": "https://res.cloudinary.com/dvlpsatvf/image/upload/w_400,f_auto,q_auto/v1750929500/bloom_kimono2_hvip3u.jpg" }
+      ],
+      "thumbnail": "https://res.cloudinary.com/dvlpsatvf/image/upload/w_400,f_auto,q_auto/v1750929493/bloom_kimono4_yfimgu.jpg",
+      "description": "Ankara kimono set with yellow puff sleeves and asooke strip with shorts",
+      "reviews": [],
+      "sku": "FTC1020B65D",
+      "yeartags": ["3-4", "5-6"],
+      "tags": ["male", "shirt"],
+      "category": [ "Kids Clothing"],
+      "gender":"F",
+      "colors": [
+        { "name": "Yellow", "code": "#e4c626"}
+      ],
+      "size":["M"],
+      "pagestatues":"Trending"
+    },
+    {
+      "id": 11,
+      "productname": "Black_Summer",
+      "price":{
+        "default":{ 
+          "currentprice": 14000,
+          "previousprice": 28000},
+          "5-6":{ 
+          "currentprice": 140000,
+          "previousprice": 280000}
+      },
+      "images": [
+        { "src": "https://res.cloudinary.com/dvlpsatvf/image/upload/w_400,f_auto,q_auto/v1750929495/black_summer1_g4wcim.jpg" }
+      ],
+      "thumbnail": "https://res.cloudinary.com/dvlpsatvf/image/upload/w_400,f_auto,q_auto/v1750929495/black_summer1_g4wcim.jpg",
+      "description": "Black flowery summer shirt with classic collar and short sleeves",
+      "reviews": [],
+      "sku": "FTC1020B65D",
+      "yeartags": ["3-4", "5-6"],
+      "tags": ["male", "shirt"],
+      "category": [ "Kids Clothing"],
+      "gender":"M",
+      "colors": [
+        { "name": "Black", "code": "#00000"}
+      ],
+      "size":["M"],
+      "pagestatues":"Top"
+    },
+    {
+      "id": 12,
+      "productname": "White_Summer",
+      "price":{
+        "default":{ 
+          "currentprice": 14000,
+          "previousprice": 28000},
+          "5-6":{ 
+          "currentprice": 140000,
+          "previousprice": 280000}
+      },
+      "images": [
+        { "src": "https://res.cloudinary.com/dvlpsatvf/image/upload/w_400,f_auto,q_auto/v1750929452/white_summer1_h9pgtk.jpg" }
+      ],
+      "thumbnail": "https://res.cloudinary.com/dvlpsatvf/image/upload/w_400,f_auto,q_auto/v1750929452/white_summer1_h9pgtk.jpg",
+      "description": "White flowery summer shirt with camp collar and short sleeves",
+      "reviews": [],
+      "sku": "FTC1020B65D",
+      "yeartags": ["3-4", "5-6"],
+      "tags": ["male", "shirt"],
+      "category": [ "Kids Clothing"],
+      "gender":"M",
+      "colors": [
+        { "name": "White", "code": "#fffff"}
+      ],
+      "size":["M"]
+    },
+     {
+      "id": 13,
+      "productname": "Bloomykid",
+      "price":{
+        "default":{ 
+          "currentprice": 10000,
+          "previousprice": 20000},
+          "3-4":{ 
+          "currentprice": 100000,
+          "previousprice": 200000}
+      },
+      "images": [
+        { "src": "https://res.cloudinary.com/dvlpsatvf/image/upload/w_400,f_auto,q_auto/v1750929542/bloomykid1_mqfcc0.jpg" }
+      ],
+      "thumbnail": "https://res.cloudinary.com/dvlpsatvf/image/upload/w_400,f_auto,q_auto/v1750929542/bloomykid1_mqfcc0.jpg",
+      "description": "Ankara short sleeve shirt with classic collar and asooke strips at the back",
+      "reviews": [],
+      "sku": "FTC1020B65D",
+      "yeartags": ["3-4", "5-6"],
+      "tags": ["male", "shirt"],
+      "category": [ "Kids Clothing"],
+      "gender":"M",
+      "colors": [
+        { "name": "Yellow", "code": "#E4C626"}
+      ],
+      "size":["M"],
+      "pagestatues":"STW"
+    },
+    {
+      "id": 14,
+      "productname": "Bloomy-SET",
+      "price":{
+        "default":{ 
+          "currentprice": 10000,
+          "previousprice": 20000},
+          "3-4":{ 
+          "currentprice": 100000,
+          "previousprice": 200000}
+      },
+      "images": [
+        { "src": "https://res.cloudinary.com/dvlpsatvf/image/upload/w_400,f_auto,q_auto/v1750929533/bloomy_set4_ejsat4.jpg" },
+        { "src": "https://res.cloudinary.com/dvlpsatvf/image/upload/w_400,f_auto,q_auto/v1750929510/bloomy_set2_kpxmoe.jpg" }
+      ],
+      "thumbnail": "https://res.cloudinary.com/dvlpsatvf/image/upload/w_400,f_auto,q_auto/v1750929533/bloomy_set4_ejsat4.jpg",
+      "description": "Ankara short sleeve shirt with classic collar and asooke strips at the back",
+      "reviews": [],
+      "sku": "FTC1020B65D",
+      "yeartags": ["3-4"],
+      "tags": ["male", "shirt"],
+      "category": [ "Kids Clothing"],
+      "gender":"M",
+      "colors": [
+        { "name": "Yellow", "code": "#E4C626"},
+        { "name": "Orange", "code": "#a72525"}
+      ],
+      "size":["M"],
+      "pagestatues":"Flash"
+    },
+    {
+      "id": 15,
+      "productname": "Ruby",
+      "price":{
+        "default":{ 
+          "currentprice": 13000,
+          "previousprice": 26000},
+          "3-4":{ 
+          "currentprice": 130000,
+          "previousprice": 260000},
+           "5-6":{ 
+          "currentprice": 150000,
+          "previousprice": 300000}
+      },
+      "images": [
+        { "src": "https://res.cloudinary.com/dvlpsatvf/image/upload/w_400,f_auto,q_auto/v1750929393/ruby1_dqbncb.jpg" },
+        { "src": "https://res.cloudinary.com/dvlpsatvf/image/upload/w_400,f_auto,q_auto/v1750929372/ruby2_uuv8ch.jpg" },
+        { "src": "https://res.cloudinary.com/dvlpsatvf/image/upload/w_400,f_auto,q_auto/v1750929386/ruby_set1_fooych.jpg" }
+      ],
+      "thumbnail": "https://res.cloudinary.com/dvlpsatvf/image/upload/w_400,f_auto,q_auto/v1750929393/ruby1_dqbncb.jpg",
+      "description": "short sleeve shirt with camp collar",
+      "reviews": [],
+      "sku": "FTC1020B65D",
+      "yeartags": ["3-4", "5-6"],
+      "tags": ["male", "shirt"],
+      "category": [ "Kids Clothing"],
+      "gender":"M",
+      "colors": [
+        { "name": "Green", "code": "#2f5852"}
+      ],
+      "size":["M"],
+      "pagestatues":"Trending"
+    },
+    {
+      "id": 16,
+      "productname": "Chic",
+      "price":{
+        "default":{ 
+          "currentprice": 25000,
+          "previousprice": 50000},
+           "5-6":{ 
+          "currentprice": 250000,
+          "previousprice": 500000}
+      },
+      "images": [
+        { "src": "https://res.cloudinary.com/dvlpsatvf/image/upload/w_400,f_auto,q_auto/v1750929596/chic1_uc64ug.jpg" },
+        { "src": "https://res.cloudinary.com/dvlpsatvf/image/upload/w_400,f_auto,q_auto/v1750929603/chic2_ymaeaf.jpg" },
+        { "src": "https://res.cloudinary.com/dvlpsatvf/image/upload/w_400,f_auto,q_auto/v1750929606/classy_chic_set_kd6sn6.jpg" }
+      ],
+      "thumbnail": "https://res.cloudinary.com/dvlpsatvf/image/upload/w_400,f_auto,q_auto/v1750929603/chic2_ymaeaf.jpg",
+      "description": "Flowery jumpsuit with belt and classic top",
+      "reviews": [],
+      "sku": "FTC1020B65D",
+      "yeartags": ["3-4", "5-6"],
+      "tags": ["male", "shirt"],
+      "category": [ "Kids Clothing"],
+      "gender":"F",
+      "colors": [
+        { "name": "White", "code": "#fff"},
+        { "name": "Red", "code": "#85262e"}
+      ],
+      "size":["M"],
+      "pagestatues": "Top"
+    },
+    {
+      "id": 17,
+      "productname": "Classic",
+      "price":{
+        "default":{ 
+          "currentprice": 25000,
+          "previousprice": 50000},
+           "5-6":{ 
+          "currentprice": 250000,
+          "previousprice": 500000}
+      },
+      "images": [
+        { "src": "https://res.cloudinary.com/dvlpsatvf/image/upload/w_400,f_auto,q_auto/v1750929600/classic2_ivwftb.jpg" },
+        { "src": "https://res.cloudinary.com/dvlpsatvf/image/upload/w_400,f_auto,q_auto/v1750929596/classic1_sv6tnt.jpg" },
+        { "src": "https://res.cloudinary.com/dvlpsatvf/image/upload/w_400,f_auto,q_auto/v1750929606/classy_chic_set_kd6sn6.jpg" }
+      ],
+      "thumbnail": "https://res.cloudinary.com/dvlpsatvf/image/upload/w_400,f_auto,q_auto/v1750929600/classic2_ivwftb.jpg",
+      "description": "Flowery jumpsuit with belt and classic top",
+      "reviews": [],
+      "sku": "FTC1020B65D",
+      "yeartags": ["3-4", "5-6"],
+      "tags": ["male", "shirt"],
+      "category": [ "Kids Clothing"],
+      "gender":"F",
+      "colors": [
+        { "name": "Black", "code": "#fff"},
+        { "name": "Creme", "code": "#c9c4b1"}
+      ],
+      "size":["M"],
+      "pagestatues": "STw"
+    },
+     {
+      "id": 18,
+      "productname": "Creme",
+      "price":{
+        "default":{ 
+          "currentprice": 13000,
+          "previousprice": 26000},
+          "3-4":{ 
+          "currentprice": 130000,
+          "previousprice": 260000},
+           "5-6":{ 
+          "currentprice": 150000,
+          "previousprice": 300000}
+      },
+      "images": [
+        { "src": "https://res.cloudinary.com/dvlpsatvf/image/upload/w_400,f_auto,q_auto/v1750929622/creme1_jndthf.jpg" },
+        { "src": "https://res.cloudinary.com/dvlpsatvf/image/upload/w_400,f_auto,q_auto/v1750929614/creme2_fmcode.jpg" }
+      ],
+      "thumbnail": "https://res.cloudinary.com/dvlpsatvf/image/upload/w_400,f_auto,q_auto/v1750929622/creme1_jndthf.jpg",
+      "description": "short sleeve shirt with classic collar",
+      "reviews": [],
+      "sku": "FTC1020B65D",
+      "yeartags": ["3-4", "5-6"],
+      "tags": ["male", "shirt"],
+      "category": [ "Kids Clothing"],
+      "gender":"M",
+      "colors": [
+        { "name": "Creme", "code": "#c9c4b1"}
+      ],
+      "size":["M"],
+      "pagestatues":"Flash"
+    },
+     {
+      "id": 19,
+      "productname": "Shirly",
+      "price":{
+        "default":{ 
+          "currentprice": 8000,
+          "previousprice": 16000},
+          "3-4":{ 
+          "currentprice": 8000,
+          "previousprice": 160000},
+           "5-6":{ 
+          "currentprice": 8000,
+          "previousprice": 160000}
+      },
+      "images": [
+      ],
+      "thumbnail": "https://res.cloudinary.com/dvlpsatvf/image/upload/w_400,f_auto,q_auto/v1750929387/shirley1_sqmbtv.jpg",
+      "description": "Frock skirt with botton",
+      "reviews": [],
+      "sku": "FTC1020B65D",
+      "yeartags": ["3-4", "5-6"],
+      "tags": ["male", "shirt"],
+      "category": [ "Kids Clothing"],
+      "gender":"F",
+      "colors": [
+        { "name": "Black", "code": "#000"}
+      ],
+      "size":["M"],
+      "pagestatues":"Trending"
+    },
+    {
+      "id": 20,
+      "productname": "Shirly",
+      "price":{
+        "default":{ 
+          "currentprice": 8000,
+          "previousprice": 16000},
+          "3-4":{ 
+          "currentprice": 8000,
+          "previousprice": 160000},
+           "5-6":{ 
+          "currentprice": 8000,
+          "previousprice": 160000}
+      },
+      "images": [
+      ],
+      "thumbnail": "https://res.cloudinary.com/dvlpsatvf/image/upload/w_400,f_auto,q_auto/v1750929407/shirley2_qan8zq.jpg",
+      "description": "Skort",
+      "reviews": [],
+      "sku": "FTC1020B65D",
+      "yeartags": ["3-4", "5-6"],
+      "tags": ["male", "shirt"],
+      "category": [ "Kids Clothing"],
+      "gender":"F",
+      "colors": [
+        { "name": "Ash", "code": "#6d6c74"}
+      ],
+      "size":["M"],
+      "pagestatues":"Top"
+    },
+    {
+      "id": 21,
+      "productname": "Tiara Dress",
+      "price":{
+        "default":{ 
+          "currentprice": 10000,
+          "previousprice": 20000},
+           "5-6":{ 
+          "currentprice": 10000,
+          "previousprice": 200000}
+      },
+      "images": [
+      ],
+      "thumbnail": "https://res.cloudinary.com/dvlpsatvf/image/upload/w_400,f_auto,q_auto/v1750929740/tiara_dress2_tuvkmt.jpg",
+      "description": "A line gown",
+      "reviews": [],
+      "sku": "FTC1020B65D",
+      "yeartags": ["3-4", "5-6"],
+      "tags": ["male", "shirt"],
+      "category": [ "Kids Clothing"],
+      "gender":"F",
+      "colors": [
+        { "name": "Pink", "code": "#000"}
+      ],
+      "size":["L"],
+      "pagestatues":"STW"
+    },
+     {
+      "id": 22,
+      "productname": "Violet",
+      "price":{
+        "default":{ 
+          "currentprice": 10000,
+          "previousprice": 20000},
+           "5-6":{ 
+          "currentprice": 10000,
+          "previousprice": 200000}
+      },
+      "images": [
+      ],
+      "thumbnail": "https://res.cloudinary.com/dvlpsatvf/image/upload/w_400,f_auto,q_auto/v1750929456/violet1_fvy6o3.jpg",
+      "description": "A line gown",
+      "reviews": [],
+      "sku": "FTC1020B65D",
+      "yeartags": ["3-4", "5-6"],
+      "tags": ["male", "shirt"],
+      "category": [ "Kids Clothing"],
+      "gender":"F",
+      "colors": [
+        { "name": "Oxblood", "code": "#000"}
+      ],
+      "size":["L"],
+      "pagestatues":"Flash"
+    }
+  ],
+  "size": [
+    { "id": 1, "size": "S", "yeartags": ["1-2", "2-3"] },
+    { "id": 2, "size": "M", "yeartags": ["3-4", "4-5", "5-6", "6-7"] },
+    { "id": 3, "size": "L", "yeartags": ["7-8", "8-9", "9-10"] }
+  ],
+  "category":[  
+    { "id": 1, "name": "Fashion Kid" },
+    { "id": 2, "name": "Game/Park" },
+    { "id": 3, "name": "Smart Look" },
+    { "id": 4, "name": "Indoor Clothing" },
+    { "id": 5, "name": "Outdoor Clothing" }
+  ],
+  "blogpost":[
+    
+  ],
+  "color": []
+}

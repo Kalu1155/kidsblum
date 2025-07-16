@@ -3,25 +3,45 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import Navbar from "../Component/Navbar";
 import Footer from "../Component/Footer";
-import data from '../../Data.json';
+import data from '../../kids-blum.json';
 import cartImage6 from "../assets/img/product/post-card1-6.png";
 import commentAuthor from "../assets/img/blog/comment-author-5.png";
+import { useCart } from '../context/CartContext';
 
 
 const ShopDetials = () => {
-   const { id } = useParams();
-  const { products } = data; 
+  const { id } = useParams();
+  const { products } = data;
   const product = products.find(p => p.id.toString() === id);
-
   const [mainImage, setMainImage] = useState(null);
+  const [selectedAge, setSelectedAge] = useState("default");
+  const [selectedColor, setSelectedColor] = useState(product?.colors?.[0] || null);
+  const [quantity, setQuantity] = useState(1);
+  // const ageOptions = Object.keys(product.price).filter(age => age !== "default");
+  // const current = product.price[selectedAge].currentprice.toLocaleString();
+  // const previous = product.price[selectedAge].previousprice.toLocaleString();
+
+  const { addToCart } = useCart()
 
   useEffect(() => {
     if (product) {
       setMainImage(product.thumbnail);
+      setSelectedColor(product.colors?.[0] || null);
+      setSelectedAge("default");
+      setQuantity(1)
     }
   }, [product]);
 
   if (!product) return <div>Product not found</div>;
+
+  const ageOptions = Object.keys(product.price).filter(age => age !== "default");
+  const current = product.price[selectedAge]?.currentprice?.toLocaleString() || product.price.default.currentprice.toLocaleString();
+  const previous = product.price[selectedAge]?.previousprice?.toLocaleString() || product.price.default.previousprice.toLocaleString();
+
+  const handleAddToCart = () => {
+    addToCart(product, quantity, selectedAge, selectedColor);
+    alert(`${product.productname} (${selectedAge} age, ${selectedColor?.name || 'No color'}) added to cart!`);
+  };
 
   return (
     <>
@@ -43,29 +63,29 @@ const ShopDetials = () => {
         <div className="container">
           <div className="row gx-60 gy-50">
             {/* Left: Thumbnails */}
-             <div className="col-md-1 d-flex flex-row flex-sm-column gap-2 overflow-auto">
-  {product.images.map((imgObj, i) => (
-    <div className="img-thumbnail border" key={i}>
-      <img
-        src={imgObj.src}
-        alt={`Product Thumbnail ${i + 1}`}
-        className="img-fluid"
-        style={{ maxHeight: '80px', cursor: 'pointer' }}
-        onClick={() => setMainImage(imgObj.src)}
-      />
-    </div>
-  ))}
-</div>
+            <div className="col-md-1 d-flex flex-row flex-sm-column gap-2 overflow-auto">
+              {product.images.map((imgObj, i) => (
+                <div className="img-thumbnail border" key={i}>
+                  <img
+                    src={imgObj.src}
+                    alt={`Product Thumbnail ${i + 1}`}
+                    className="img-fluid"
+                    style={{ maxHeight: '80px', cursor: 'pointer' }}
+                    onClick={() => setMainImage(imgObj.src)}
+                  />
+                </div>
+              ))}
+            </div>
 
 
             {/* Center: Big Product Image */}
             <div className="col-md-5 align-items-center justify-content-center">
-              <div className="product-big-img border p-3">
+              <div className="product-big-img border">
                 <img
-                   src={mainImage}
+                  src={mainImage}
                   alt="Main Product"
                   className="img-fluid"
-                  style={{ maxHeight: '400px' }}
+                // style={{ maxHeight: '400px' }}
                 />
               </div>
             </div>
@@ -94,28 +114,73 @@ const ShopDetials = () => {
                   {product.description}
                 </p>
                 <p className="price">
-                  ${product.currentprice}<del>${product.previousprice}</del>
+                  ₦{current}<del>₦{previous}</del>
                   <span className="stock-availability">
                     Stock Availability.
                   </span>
                 </p>
                 <div className="product-option">
+
                   <div className="product-size-wrap">
-                    <div className="product-option-title">Size:</div>
-                    <a href="#">XL</a> <a href="#">M</a> <a href="#">L</a>
-                    <a href="#">S</a> <a href="#">XS</a>
+                    <div className="product-option-title">Age:</div>
+                    <div className="age-options">
+                      {ageOptions.map((age) => (
+                        <a
+                          key={age}
+                          href="#"
+                          onClick={(e) => {
+                            e.preventDefault();
+                            setSelectedAge(age);
+                          }}
+                          style={{
+                            marginRight: '10px',
+                            textDecoration: selectedAge === age ? 'underline' : 'none',
+                            fontWeight: selectedAge === age ? 'bold' : 'normal'
+                          }}
+                        >
+                          {age}
+                        </a>
+                      ))}
+                    </div>
                   </div>
+                  <div className="product-size-wrap">
+                    <div className="product-option-title">Gender:</div>
+                    <div className="age-options">
+
+                      <a >
+                        {product.gender}
+                      </a>
+
+                    </div>
+                  </div>
+
                   <div className="product-color-wrap">
                     <div className="product-option-title">Color:</div>
-                    <a data-theme-color="#FF4579" href="#"></a>
-                    <a data-theme-color="#1EC7DA" href="#"></a>
-                    <a data-theme-color="#3577F1" href="#"></a>
-                    <a data-theme-color="#F39F5F" href="#"></a>
+                    {product.colors.map((color, i) => (
+                      <a href="#"
+                        key={i}
+                        onClick={(e) => {
+                          e.preventDefault();
+                          setSelectedColor(color);
+                        }}
+                        style={{
+                          backgroundColor: color.code,
+                          border: selectedColor?.code === color.code ? '2px solid #000' : '1px solid #ccc',
+                          borderRadius: '50%',
+                          display: 'inline-block',
+                          width: '15px',
+                          height: '15px',
+                          marginRight: '5px',
+                          cursor: 'pointer',
+                        }}
+                        title={color.name}></a>
+                    ))}
                   </div>
                 </div>
                 <div className="actions">
                   <div className="quantity">
-                    <button className="quantity-minus qty-btn">
+                    <button className="quantity-minus qty-btn"
+                      onClick={() => setQuantity(Math.max(1, quantity - 1))}>
                       <i className="far fa-minus"></i>
                     </button>
                     <input
@@ -125,16 +190,18 @@ const ShopDetials = () => {
                       min="1"
                       max="100"
                       name="quantity"
-                      value="1"
+                      value={quantity}
+                      onChange={(e) => setQuantity(parseInt(e.target.value) || 1)}
                       title="Qty"
                     />
-                    <button className="quantity-plus qty-btn">
+                    <button className="quantity-plus qty-btn"
+                      onClick={() => setQuantity(quantity + 1)}>
                       <i className="far fa-plus"></i>
                     </button>
                   </div>
-                  <button className="ot-btn">
-                    <i className="fa-light fa-basket-shopping me-1"></i> Add to
-                    Cart
+                  <button className="ot-btn" onClick={handleAddToCart}>
+                    <i className="fa-light fa-basket-shopping me-1" 
+                    ></i> Add to Cart
                   </button>
                   <a href="wishlist.html" className="icon-btn">
                     <i className="far fa-heart"></i>
@@ -165,7 +232,6 @@ const ShopDetials = () => {
                         <ul>
                           <li>
                             <i className="fas fa-check"></i> Free shipping
-                            orders from $150
                           </li>
                           <li>
                             <i className="fas fa-check"></i> 30 days exchange &
@@ -178,8 +244,8 @@ const ShopDetials = () => {
                       <div className="check-list">
                         <ul>
                           <li>
-                            <i className="fas fa-check"></i> Babymart Flash
-                            Discount: Starting at 30% Off
+                            <i className="fas fa-check"></i> KIDSBLUM Flash
+                            Discount: Starting at 50% Off
                           </li>
                           <li>
                             <i className="fas fa-check"></i> Safe & Secure

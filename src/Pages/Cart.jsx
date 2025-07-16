@@ -1,12 +1,26 @@
 import React from 'react'
 import Navbar from "../Component/Navbar";
 import Footer from "../Component/Footer";
+import { useCart } from '../context/CartContext';
+import { Link } from "react-router-dom";
 import cartImage1 from "../assets/img/product/post-card1-1.png";
 import cartImage6 from "../assets/img/product/post-card1-6.png";
 import cartImage15 from "../assets/img/product/post-card1-15.png";
 
 
 const Cart = () => {
+
+    const { cartItems, removeFromCart, updateQuantity } = useCart(); // Use cart context
+
+  const calculateSubtotal = () => {
+    return cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
+  };
+
+  const calculateOrderTotal = () => {
+    return calculateSubtotal();
+  };
+
+
   return (
     <>
   <Navbar/>
@@ -37,156 +51,85 @@ const Cart = () => {
               </tr>
             </thead>
             <tbody>
-              <tr className="cart_item">
-                <td data-title="Remove">
-                  <a href="#" className="remove"><i className="far fa-close"></i></a>
-                </td>
-                <td data-title="Product">
-                  <a className="cart-productimage" href="/shopdetails"
-                    ><img
-                      width="91"
-                      height="91"
-                      src={cartImage6}
-                      alt="Image"
-                  /></a>
-                </td>
-                <td data-title="Name">
-                  <a className="cart-productname" href="/shopdetails"
-                    >Ultricies At Torquent Dui</a
-                  >
-                </td>
-                <td data-title="Price">
-                  <span className="amount">
-                    <bdi><span>$</span>12.00 <del>$19.99</del></bdi>
-                  </span>
-                </td>
-                <td data-title="Quantity">
-                  <div className="quantity">
-                    <button className="quantity-minus qty-btn">
-                      <i className="far fa-minus"></i>
-                    </button>
-                    <input
-                      type="number"
-                      className="qty-input"
-                      value="1"
-                      min="1"
-                      max="99"
-                    />
-                    <button className="quantity-plus qty-btn">
-                      <i className="far fa-plus"></i>
-                    </button>
-                  </div>
-                </td>
-                <td data-title="Total">
-                  <span className="amount">
-                    <bdi><span>$</span>12.00</bdi>
-                  </span>
-                </td>
-              </tr>
-              <tr className="cart_item">
-                <td data-title="Remove">
-                  <a href="#" className="remove"><i className="far fa-close"></i></a>
-                </td>
-                <td data-title="Product">
-                  <a className="cart-productimage" href="/shopdetails"
-                    ><img
-                      width="91"
-                      height="91"
-                      src={cartImage15}
-                      alt="Image"
-                  /></a>
-                </td>
-                <td data-title="Name">
-                  <a className="cart-productname" href="/shopdetails"
-                    >Round New Red Toy</a
-                  >
-                </td>
-                <td data-title="Price">
-                  <span className="amount">
-                    <bdi><span>$</span>14.00</bdi>
-                  </span>
-                </td>
-                <td data-title="Quantity">
-                  <div className="quantity">
-                    <button className="quantity-minus qty-btn">
-                      <i className="far fa-minus"></i>
-                    </button>
-                    <input
-                      type="number"
-                      className="qty-input"
-                      value="1"
-                      min="1"
-                      max="99"
-                    />
-                    <button className="quantity-plus qty-btn">
-                      <i className="far fa-plus"></i>
-                    </button>
-                  </div>
-                </td>
-                <td data-title="Total">
-                  <span className="amount">
-                    <bdi><span>$</span>14.00</bdi>
-                  </span>
-                </td>
-              </tr>
-              <tr className="cart_item">
-                <td data-title="Remove">
-                  <a href="#" className="remove"><i className="far fa-close"></i></a>
-                </td>
-                <td data-title="Product">
-                  <a className="cart-productimage" href="/shopdetails"
-                    ><img
-                      width="91"
-                      height="91"
-                      src={cartImage1}
-                      alt="Image"
-                  /></a>
-                </td>
-                <td data-title="Name">
-                  <a className="cart-productname" href="/shopdetails"
-                    >White One-Piece Dress</a
-                  >
-                </td>
-                <td data-title="Price">
-                  <span className="amount">
-                    <bdi><span>$</span>19.00 <del>$26.99</del></bdi>
-                  </span>
-                </td>
-                <td data-title="Quantity">
-                  <div className="quantity">
-                    <button className="quantity-minus qty-btn">
-                      <i className="far fa-minus"></i>
-                    </button>
-                    <input
-                      type="number"
-                      className="qty-input"
-                      value="1"
-                      min="1"
-                      max="99"
-                    />
-                    <button className="quantity-plus qty-btn">
-                      <i className="far fa-plus"></i>
-                    </button>
-                  </div>
-                </td>
-                <td data-title="Total">
-                  <span className="amount">
-                    <bdi><span>$</span>19</bdi>
-                  </span>
-                </td>
-              </tr>
+              {cartItems.length === 0 ? (
+                  <tr>
+                    <td colSpan="6" className="text-center">Your cart is empty.</td>
+                  </tr>
+                ) : (
+                  cartItems.map((item) => (
+                    <tr className="cart_item" key={`${item.id}-${item.selectedAge}-${item.selectedColor?.code}`}>
+                      <td data-title="Remove">
+                        <a href="#" className="remove" onClick={() => removeFromCart(item.id, item.selectedAge, item.selectedColor?.code)}>
+                          <i className="far fa-close"></i>
+                        </a>
+                      </td>
+                      <td data-title="Product">
+                        <a className="cart-productimage" href={`/shopdetails/${item.id}`}>
+                          <img
+                            width="91"
+                            height="91"
+                            src={item.thumbnail}
+                            alt="Image"
+                          />
+                        </a>
+                      </td>
+                      <td data-title="Name">
+                        <a className="cart-productname" href={`/shopdetails/${item.id}`}>
+                          {item.productname} {item.selectedAge !== "default" && `(${item.selectedAge})`} {item.selectedColor && `[${item.selectedColor.name}]`}
+                        </a>
+                      </td>
+                      <td data-title="Price">
+                        <span className="amount">
+                          <bdi><span>₦</span>{item.price.toLocaleString()}</bdi>
+                        </span>
+                      </td>
+                      <td data-title="Quantity">
+                        <div className="quantity">
+                          <button
+                            className="quantity-minus qty-btn"
+                            onClick={() => updateQuantity(item.id, item.selectedAge, item.selectedColor?.code, Math.max(1, item.quantity - 1))}
+                          >
+                            <i className="far fa-minus"></i>
+                          </button>
+                          <input
+                            type="number"
+                            className="qty-input"
+                            value={item.quantity}
+                            min="1"
+                            max="99"
+                            onChange={(e) => updateQuantity(item.id, item.selectedAge, item.selectedColor?.code, parseInt(e.target.value) || 1)}
+                          />
+                          <button
+                            className="quantity-plus qty-btn"
+                            onClick={() => updateQuantity(item.id, item.selectedAge, item.selectedColor?.code, item.quantity + 1)}
+                          >
+                            <i className="far fa-plus"></i>
+                          </button>
+                        </div>
+                      </td>
+                      <td data-title="Total">
+                        <span className="amount">
+                          <bdi><span>₦</span>{(item.price * item.quantity).toLocaleString()}</bdi>
+                        </span>
+                      </td>
+                    </tr>
+                  ))
+                )}
               <tr>
                 <td colspan="6" className="actions">
-                  <div className="ot-cart-coupon">
+                  {/* <div className="ot-cart-coupon">
                     <input
                       type="text"
                       className="form-control"
                       placeholder="Coupon Code..."
                     />
                     <button type="submit" className="ot-btn">Apply Coupon</button>
-                  </div>
-                  <button type="submit" className="ot-btn">Update cart</button>
-                  <a href="/shop" className="ot-btn">Continue Shopping</a>
+                  </div> */}
+                  {/* <button type="submit" className="ot-btn">Update cart</button> */}
+                  <Link to="/shop" className="ot-btn ot-btn-secondary">
+                  Continue Shopping
+                  </Link>
+                  
                 </td>
               </tr>
             </tbody>
@@ -197,14 +140,6 @@ const Cart = () => {
             <h2 className="h4 summary-title">Cart Totals</h2>
             <table className="cart_totals">
               <tbody>
-                <tr>
-                  <td>Cart Subtotal</td>
-                  <td data-title="Cart Subtotal">
-                    <span className="amount">
-                      <bdi><span>$</span>47</bdi>
-                    </span>
-                  </td>
-                </tr>
                 <tr className="shipping">
                   <th>Shipping and Handling</th>
                   <td data-title="Shipping and Handling">
@@ -224,7 +159,7 @@ const Cart = () => {
                           id="flat_rate"
                           name="shipping_method"
                           className="shipping_method"
-                          checked="checked"
+                          // checked="checked"
                         />
                         <label for="flat_rate">Flat rate</label>
                       </li>
@@ -281,7 +216,7 @@ const Cart = () => {
                   <td data-title="Total">
                     <strong>
                       <span className="amount">
-                        <bdi><span>$</span>47</bdi>
+                        <bdi><span>₦</span>{calculateOrderTotal().toLocaleString()}</bdi>
                       </span>
                     </strong>
                   </td>

@@ -7,10 +7,12 @@ import timeSvg from "../assets/img/icon/time.svg";
 import locationSvg from "../assets/img/icon/location.svg";
 import logoFooter from "../assets/img/mainlogo.png";
 import payment from "../assets/img/normal/payments.png";
+
 const Footer = () => {
+
   return (
     <>
- <footer className="footer-wrapper footer-layout1" data-bg-src={footerBg1}>
+      <footer className="footer-wrapper footer-layout1" data-bg-src={footerBg1}>
         <div className="footer-shape1 pulse">
           <img src={footerShape1} alt="img" />
         </div>
