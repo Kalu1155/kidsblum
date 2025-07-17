@@ -127,7 +127,7 @@ const Cart = () => {
                   </div> */}
 
                     {/* <a
-                      href={`https://wa.me/2348087988611?text=${encodeURIComponent(
+                      href={`https://wa.me/2348159363962?text=${encodeURIComponent(
                         `Hello! Here’s my cart:\n\n` +
                         cartItems
                           .map((item, index) => {
@@ -250,7 +250,7 @@ const Cart = () => {
               </table>
                 <div className="wc-proceed-to-checkout mb-30">
                   <a
-                    href={`https://wa.me/234XXXXXXXXXX?text=${encodeURIComponent(
+                    href={`https://wa.me/2348159363962?text=${encodeURIComponent(
                       `Hello! Here’s my cart:\n\n` +
                       cartItems
                         .map((item, index) => {

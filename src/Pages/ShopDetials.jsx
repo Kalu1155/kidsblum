@@ -201,7 +201,7 @@ const ShopDetials = () => {
                     ></i> Add to Cart
                   </button>
                   <a
-                    href={`https://wa.me/2348087988611?text=${encodeURIComponent(
+                    href={`https://wa.me/2348159363962?text=${encodeURIComponent(
                       `Hello! I'm interested in this product:\n\n` +
                       `Product Name: ${product.productname}\n` +
                       `Price: ₦${product.price?.[selectedAge || "default"]?.currentprice?.toLocaleString()}\n` +
