@@ -3,9 +3,6 @@ import Navbar from "../Component/Navbar";
 import Footer from "../Component/Footer";
 import { useCart } from '../context/CartContext';
 import { Link } from "react-router-dom";
-import cartImage1 from "../assets/img/product/post-card1-1.png";
-import cartImage6 from "../assets/img/product/post-card1-6.png";
-import cartImage15 from "../assets/img/product/post-card1-15.png";
 
 
 const Cart = () => {
@@ -74,9 +71,9 @@ const Cart = () => {
                         </a>
                       </td>
                       <td data-title="Name">
-                        <a className="cart-productname" href={`/shopdetails/${item.id}`}>
+                        <Link className="cart-productname" href={`/shopdetails/${item.id}`}>
                           {item.productname} {item.selectedAge !== "default" && `(${item.selectedAge})`} {item.selectedColor && `[${item.selectedColor.name}]`}
-                        </a>
+                        </Link>
                       </td>
                       <td data-title="Price">
                         <span className="amount">
@@ -85,12 +82,12 @@ const Cart = () => {
                       </td>
                       <td data-title="Quantity">
                         <div className="quantity">
-                          <button
+                          <Link
                             className="quantity-minus qty-btn"
                             onClick={() => updateQuantity(item.id, item.selectedAge, item.selectedColor?.code, Math.max(1, item.quantity - 1))}
                           >
                             <i className="far fa-minus"></i>
-                          </button>
+                          </Link>
                           <input
                             type="number"
                             className="qty-input"
@@ -99,12 +96,12 @@ const Cart = () => {
                             max="99"
                             onChange={(e) => updateQuantity(item.id, item.selectedAge, item.selectedColor?.code, parseInt(e.target.value) || 1)}
                           />
-                          <button
+                          <Link
                             className="quantity-plus qty-btn"
                             onClick={() => updateQuantity(item.id, item.selectedAge, item.selectedColor?.code, item.quantity + 1)}
                           >
                             <i className="far fa-plus"></i>
-                          </button>
+                          </Link>
                         </div>
                       </td>
                       <td data-title="Total">

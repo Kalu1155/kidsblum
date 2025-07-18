@@ -44,7 +44,6 @@ const Index1 = () => {
       try {
         const response = await fetch(url);
 
-        // ✅ Check if the response is actually JSON
         const contentType = response.headers.get("content-type");
         if (!contentType || !contentType.includes("application/json")) {
           throw new Error("Oops! The API didn't return JSON.");
@@ -371,7 +370,7 @@ const Index1 = () => {
       <section className="space-bottom overflow-hidden">
         <div className="container">
           <div className="row justify-content-center">
-            <div className="col-xl-4 col-lg-6 col-md-8">
+            <div className="col-xl-6 col-lg-6 col-md-8">
               <div className="title-area text-center">
                 <h2 className="sec-title">Shop by Category</h2>
                 <p className="sec-text" data-delay="100">

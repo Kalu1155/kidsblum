@@ -112,83 +112,44 @@ const Navbar = () => {
         </div>
 
         {/* Mobile Menu */}
-        {/* <div className={`ot-menu-wrapper mobile ${menuOpen ? "active" : ""}`}>
+        <div className={`ot-menu-wrapper mobile ${menuOpen ? "active" : ""}`}>
           <div className="ot-menu-area text-center">
             <button className="ot-menu-toggle" onClick={toggleMenu}>
               <i className="fal fa-times"></i>
             </button>
             <div className="mobile-logo my-3">
-              <Link to="/" onClick={toggleMenu}>
+              <Link to="/" >
                 <img src={babyMart} alt="Babymart" style={{ width: "120px" }} />
               </Link>
             </div>
             <div className="ot-mobile-menu">
               <ul>
                 <li>
-                  <Link to="/" onClick={toggleMenu}>Home</Link>
+                  <Link to="/">Home</Link>
                 </li>
                 <li>
-                  <Link to="/shop" onClick={toggleMenu}>Shop</Link>
+                  <Link to="/shop">Shop</Link>
                 </li>
                 <li>
-                  <button className="mobile-sub-toggle" onClick={toggleSubmenu}>
-                    Pages <i className="fas fa-chevron-down ms-1"></i>
+                  <button className="mobile-sub-toggle pagedpd menu-item-has-children" onClick={toggleSubmenu}>
+                    KIDSBLUM <i className="fas fa-chevron-down ms-1"></i>
                   </button>
                   {submenuOpen && (
                     <ul className="sub-menu mt-2">
-                      <li><Link to="/about" onClick={toggleMenu}>About</Link></li>
-                      <li><Link to="/faq" onClick={toggleMenu}>FAQ</Link></li>
-                      <li><Link to="/testimonial" onClick={toggleMenu}>Testimonial</Link></li>
-                      <li><Link to="/blog" onClick={toggleMenu}>Blog</Link></li>
+                      <li><Link to="/about" >About</Link></li>
+                      <li><Link to="/faq">FAQ</Link></li>
+                      <li><Link to="/testimonial">Testimonial</Link></li>
+                      <li><Link to="/blog">Blog</Link></li>
                     </ul>
                   )}
                 </li>
-                <li><Link to="/contact" onClick={toggleMenu}>Contact Us</Link></li>
+                <li><Link to="/events">Events</Link></li>
+                <li><Link to="/cart">Cart</Link></li>
               </ul>
             </div>
           </div>
-        </div> */}
-        {menuOpen && (
-  <div className="ot-menu-wrapper mobile active">
-    <div className="ot-menu-area text-center">
-      <button className="ot-menu-toggle" onClick={toggleMenu}>
-        <i className="fal fa-times"></i>
-      </button>
-      <div className="mobile-logo my-3">
-        <Link to="/" onClick={toggleMenu}>
-          <img src={babyMart} alt="Babymart" style={{ width: "100px" }} />
-        </Link>
-      </div>
-      <div className="ot-mobile-menu">
-        <ul className="mobile-menu-list">
-          <li>
-            <Link to="/" onClick={toggleMenu}>Home</Link>
-          </li>
-          <li>
-            <Link to="/shop" onClick={toggleMenu}>Shop</Link>
-          </li>
-          <li>
-            <button className="mobile-sub-toggle" onClick={toggleSubmenu}>
-              Pages <i className="fas fa-chevron-down ms-1"></i>
-            </button>
-            {submenuOpen && (
-              <ul className="sub-menu">
-                <li><Link to="/about" onClick={toggleMenu}>About</Link></li>
-                <li><Link to="/faq" onClick={toggleMenu}>FAQ</Link></li>
-                <li><Link to="/testimonial" onClick={toggleMenu}>Testimonial</Link></li>
-                <li><Link to="/blog" onClick={toggleMenu}>Blog</Link></li>
-              </ul>
-            )}
-          </li>
-          <li><Link to="/contact" onClick={toggleMenu}>Contact Us</Link></li>
-        </ul>
-      </div>
-    </div>
-  </div>
-)}
-
-
-      </header>
+        </div>
+       </header>
     </>
   );
 };
