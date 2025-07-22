@@ -15,7 +15,6 @@ import categoryCard2 from "../assets/img/category/category_card1_2.png";
 import categoryCard3 from "../assets/img/category/category_card1_3.png";
 import categoryCard4 from "../assets/img/category/category_card1_4.png";
 import categoryCard5 from "../assets/img/category/category_card1_5.png";
-import categoryCard6 from "../assets/img/category/category_card1_6.png";
 import ctaBg1 from "../assets/img/bg/cta_bg_2_1.png";
 import categoryCard21 from "../assets/img/category/category_card2_1.png";
 import categoryCard22 from "../assets/img/category/category_card2_2.png";
@@ -389,7 +388,6 @@ const Index1 = () => {
                   </div>
                   <h3 className="box-title">
                     <Link to="/categoryfilter?category=Fashion Kid">Fashion Kid</Link>
-                    {/* <a href="/shop">Fashion KIDs</a> */}
                   </h3>
                 </div>
               </div>
@@ -402,7 +400,7 @@ const Index1 = () => {
                     <img src={categoryCard2} alt="Image" />
                   </div>
                   <h3 className="box-title">
-                    <a href="/shop">Game/Park</a>
+                    <Link to="/categoryfilter?category=Game/Park">Game/Park</Link>
                   </h3>
                 </div>
               </div>
@@ -415,7 +413,7 @@ const Index1 = () => {
                     <img src={categoryCard3} alt="Image" />
                   </div>
                   <h3 className="box-title">
-                    <a href="/shop">Smart Look</a>
+                    <Link to="/categoryfilter?category=Smart Look">Smart Look</Link>
                   </h3>
                 </div>
               </div>
@@ -428,7 +426,7 @@ const Index1 = () => {
                     <img src={categoryCard4} alt="Image" />
                   </div>
                   <h3 className="box-title">
-                    <a href="/shop">Indoor Clothing</a>
+                    <Link to="/categoryfilter?category=Indoor Clothing">Indoor Clothing</Link>
                   </h3>
                 </div>
               </div>
@@ -441,20 +439,7 @@ const Index1 = () => {
                     <img src={categoryCard5} alt="Image" />
                   </div>
                   <h3 className="box-title">
-                    <a href="/shop">Outdoor Clothing</a>
-                  </h3>
-                </div>
-              </div>
-            </div>
-
-            <div>
-              <div className="swiper-slide">
-                <div className="category-card">
-                  <div className="box-img" data-theme-color="#AD6643">
-                    <img src={categoryCard6} alt="Image" />
-                  </div>
-                  <h3 className="box-title">
-                    <a href="/shop">Indoor Play</a>
+                    <Link to="/categoryfilter?category=Outdoor Clothing">Outdoor Clothing</Link>
                   </h3>
                 </div>
               </div>
