@@ -26,7 +26,7 @@ const Footer = () => {
                 <div className="media-body">
                   <p className="box-label">Call Us 7/24</p>
                   <h4 className="box-title">
-                    <a href="tel:+2085550112">+208-555-0112</a>
+                    <a href="tel:+234703632 6018">+234-703 632-6018</a>
                   </h4>
                 </div>
               </div>
@@ -37,7 +37,7 @@ const Footer = () => {
                 <div className="media-body">
                   <p className="box-label">Make a Quote</p>
                   <h4 className="box-title">
-                    <a href="mailto:babymart@gmail.com">babymart@gmail.com</a>
+                    <a href="mailto:kidsblum@gmail.com">kidsblum@gmail.com</a>
                   </h4>
                 </div>
               </div>
@@ -70,7 +70,7 @@ const Footer = () => {
                   <div className="ot-widget-about">
                     <div className="about-logo">
                       <a href="/">
-                        <img src={logoFooter} style={{ width: "7vw" }} alt="Babymart" />
+                        <img src={logoFooter} style={{ width: "7vw" }} alt="kidsblum" />
                       </a>
                     </div>
                     <p className="about-text">
@@ -190,7 +190,7 @@ const Footer = () => {
               <div className="col-md-auto">
                 <p className="copyright-text">
                   <i className="fal fa-copyright"></i> Copyright 2025
-                  <a href="/">Babymart</a>. All Rights Reserved.
+                  <a href="/">Kidsblum</a>. All Rights Reserved.
                 </p>
               </div>
               <div className="col-md-auto">

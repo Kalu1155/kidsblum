@@ -107,7 +107,7 @@ const About = () => {
                     <div className="media-body">
                       <p className="box-subtitle">Call Us Now</p>
                       <h3 className="box-title">
-                        <a href="tel:+1632543654">+208-555-0112</a>
+                        <a href="tel:+2347036326018">+234-703-632-6018</a>
                       </h3>
                     </div>
                   </div>
@@ -189,7 +189,7 @@ const About = () => {
                     <div className="media-body">
                       <p className="box-subtitle">Call Us Now</p>
                       <h3 className="box-title">
-                        <a href="tel:+1632543654">+208-555-0112</a>
+                        <a href="tel:+2347036326018">+234-703-632-6018</a>
                       </h3>
                     </div>
                   </div>
@@ -286,7 +286,7 @@ const About = () => {
                     <div className="media-body">
                       <p className="box-subtitle">Call Us Now</p>
                       <h3 className="box-title">
-                        <a href="tel:+1632543654">+208-555-0112</a>
+                        <a href="tel:+2347036326018">+234-703-632-6018</a>
                       </h3>
                     </div>
                   </div>
